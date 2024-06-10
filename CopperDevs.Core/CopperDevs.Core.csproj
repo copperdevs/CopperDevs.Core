@@ -7,6 +7,29 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <FileVersion>1.0.0</FileVersion>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>CopperDevs.Core</Title>
+        <Copyright>MIT</Copyright>
+        <PackageProjectUrl>https://github.com/copperdevs/CopperDevs.Core/tree/master</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/copperdevs/CopperDevs.Core/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/copperdevs/copperdevs.core</RepositoryUrl>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\CopperDevs.Core.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\CopperDevs.Core.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\ReadMe.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+    
 </Project>

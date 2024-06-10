@@ -1,5 +1,7 @@
-﻿namespace CopperDevs.Core.Data;
+﻿
+namespace CopperDevs.Core.Data;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public static class ConsoleColors
 {
     private static string ForeColor(int code) => $"\u001B[38;5;{code}m";

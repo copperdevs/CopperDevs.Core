@@ -2,8 +2,16 @@
 
 namespace CopperDevs.Core.Utility;
 
+/// <summary>
+/// Utility methods for dealing with text
+/// </summary>
 public static partial class TextUtil
 {
+    /// <summary>
+    /// Convert a string to title case
+    /// </summary>
+    /// <param name="input">Input text</param>
+    /// <returns>Input text converted to title case</returns>
     public static string ConvertToTitleCase(string input)
     {
         if (string.IsNullOrEmpty(input))
