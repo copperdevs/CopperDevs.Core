@@ -45,9 +45,9 @@ public struct Matrix2X2
     }
 
     /// <summary>
-    /// 
+    /// Set the matrix rotation from radians
     /// </summary>
-    /// <param name="radians"></param>
+    /// <param name="radians">Radians value</param>
     public void Set(float radians)
     {
         var c = MathF.Cos(radians);

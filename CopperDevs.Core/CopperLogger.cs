@@ -117,9 +117,9 @@ public static class CopperLogger
     /// <summary>
     /// Base log message that all methods in <see cref="Log"/> use
     /// </summary>
-    /// <param name="colorName"></param>
-    /// <param name="prefix"></param>
-    /// <param name="message"></param>
+    /// <param name="colorName">Color of the message</param>
+    /// <param name="prefix">Prefix of the message</param>
+    /// <param name="message">The actual message</param>
     public static void LogMessage(Names colorName, string prefix, object message)
     {
         var color = GetColor(colorName);

@@ -275,10 +275,10 @@ public static class MathUtil
     }
 
     /// <summary>
-    /// 
+    /// Get the length of a vector
     /// </summary>
-    /// <param name="vector"></param>
-    /// <returns></returns>
+    /// <param name="vector">Target vector</param>
+    /// <returns>The length</returns>
     public static float Length(Vector2 vector)
     {
         return MathF.Sqrt(vector.X * vector.X + vector.Y * vector.Y);

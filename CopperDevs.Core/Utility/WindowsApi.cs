@@ -71,11 +71,11 @@ public static partial class WindowsApi
     private static partial bool GetWindowRect(IntPtr hWnd, out Rect lpRect);
 
     /// <summary>
-    /// 
+    /// Set a Desktop Windows Management Window Attribute
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
-    /// <param name="dwAttribute"></param>
-    /// <param name="pvAttribute"></param>
+    /// <param name="dwAttribute">Attribute to set</param>
+    /// <param name="pvAttribute">Value of the attribute to set</param>
     public static void SetDwmWindowAttribute(IntPtr windowHandle, WindowAttribute dwAttribute, int pvAttribute)
     {
         if (IsWindows && IsWindows11)
@@ -83,10 +83,10 @@ public static partial class WindowsApi
     }
 
     /// <summary>
-    /// 
+    /// Set the windows immersive dark mode state
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
-    /// <param name="enableDarkMode"></param>
+    /// <param name="enableDarkMode">Dark mode enabled</param>
     public static void SetDwmImmersiveDarkMode(IntPtr windowHandle, bool enableDarkMode)
     {
         if (IsWindows && IsWindows11)
@@ -94,10 +94,10 @@ public static partial class WindowsApi
     }
 
     /// <summary>
-    /// 
+    /// Change the windows backdrop type
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
-    /// <param name="backdropType"></param>
+    /// <param name="backdropType">New window backdrop type</param>
     public static void SetDwmSystemBackdropType(IntPtr windowHandle, SystemBackdropType backdropType)
     {
         if (IsWindows && IsWindows11)
@@ -105,10 +105,10 @@ public static partial class WindowsApi
     }
 
     /// <summary>
-    /// 
+    /// Set the windows corner preference
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
-    /// <param name="preference"></param>
+    /// <param name="preference">New window corner preference</param>
     public static void SetDwmWindowCornerPreference(IntPtr windowHandle, WindowCornerPreference preference)
     {
         if (IsWindows && IsWindows11)
@@ -119,7 +119,7 @@ public static partial class WindowsApi
     /// Extends the window frame into the client area.
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
-    /// <param name="margins"></param>
+    /// <param name="margins">New margins value</param>
     public static void ExtendFrameIntoClientArea(IntPtr windowHandle, Margins margins)
     {
         if (IsWindows && IsWindows11)
@@ -204,7 +204,7 @@ public static partial class WindowsApi
     /// Get the position of a specified window in monitor space
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
-    /// <returns></returns>
+    /// <returns>Position of the window</returns>
     public static Vector2 GetWindowPosition(IntPtr windowHandle)
     {
         if (!GetWindowRect(windowHandle, out var rect))
@@ -217,7 +217,7 @@ public static partial class WindowsApi
     /// Get the size of a specified window
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
-    /// <returns></returns>
+    /// <returns>Size of the widnow</returns>
     public static Vector2 GetWindowSize(IntPtr windowHandle)
     {
         if (!GetWindowRect(windowHandle, out var rect))
