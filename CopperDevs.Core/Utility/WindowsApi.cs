@@ -15,6 +15,9 @@ public static partial class WindowsApi
     /// <summary>
     /// Method called whenever a registered window is resized
     /// </summary>
+    /// <remarks>
+    /// For this callback to be ran you must first register your window with <see cref="RegisterWindow"/>
+    /// </remarks>
     public static Action<Vector2Int> OnWindowResize = null!;
 
     private delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
