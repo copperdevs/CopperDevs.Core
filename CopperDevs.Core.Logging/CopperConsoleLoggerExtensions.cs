@@ -7,7 +7,7 @@ namespace CopperDevs.Core.Logging;
 
 public static class CopperConsoleLoggerExtensions
 {
-    public static ILoggingBuilder AddColorConsoleLogger(this ILoggingBuilder builder)
+    public static ILoggingBuilder AddCopperConsoleLogger(this ILoggingBuilder builder)
     {
         builder.AddConfiguration();
 
@@ -18,9 +18,9 @@ public static class CopperConsoleLoggerExtensions
         return builder;
     }
 
-    public static ILoggingBuilder AddColorConsoleLogger(this ILoggingBuilder builder, Action<CopperConsoleLoggerConfiguration> configure)
+    public static ILoggingBuilder AddCopperConsoleLogger(this ILoggingBuilder builder, Action<CopperConsoleLoggerConfiguration> configure)
     {
-        builder.AddColorConsoleLogger();
+        builder.AddCopperConsoleLogger();
         builder.Services.Configure(configure);
 
         return builder;

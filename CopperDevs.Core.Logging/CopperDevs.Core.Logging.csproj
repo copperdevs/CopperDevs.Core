@@ -11,10 +11,11 @@
         <PackageProjectUrl>https://github.com/copperdevs/CopperDevs.Core/tree/master/CopperDevs.Core.Logging</PackageProjectUrl>
         <RepositoryUrl>https://github.com/copperdevs/copperdevs.core</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
-        <FileVersion>1.0.0</FileVersion>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <FileVersion>1.0.1</FileVersion>
         <PackageLicenseFile>License.txt</PackageLicenseFile>
         <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
