@@ -1,0 +1,18 @@
+using Microsoft.Extensions.Logging;
+
+namespace CopperDevs.Core.Logging;
+
+public sealed class CopperConsoleLoggerConfiguration
+{
+    public int EventId { get; init; }
+
+    public Dictionary<LogLevel, Action<object>> LogLevelToColorMap { get; init; } = new()
+    {
+        [LogLevel.Trace] = Log.Trace,
+        [LogLevel.Debug] = Log.Debug,
+        [LogLevel.Warning] = Log.Warning,
+        [LogLevel.Information] = Log.Info,
+        [LogLevel.Error] = Log.Error,
+        [LogLevel.Critical] = Log.Critical
+    };
+}

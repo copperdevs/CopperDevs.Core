@@ -4,27 +4,24 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>CopperDevs.Core.Logging</Title>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <Copyright>MIT</Copyright>
+        <PackageProjectUrl>https://github.com/copperdevs/CopperDevs.Core/tree/master/CopperDevs.Core.Logging</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/copperdevs/copperdevs.core</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <FileVersion>1.0.0</FileVersion>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>CopperDevs.Core</Title>
-        <Copyright>MIT</Copyright>
-        <PackageProjectUrl>https://github.com/copperdevs/CopperDevs.Core/tree/master</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/copperdevs/copperdevs.core</RepositoryUrl>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <RepositoryType>git</RepositoryType>
         <PackageLicenseFile>License.txt</PackageLicenseFile>
         <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <DocumentationFile>bin\Debug\CopperDevs.Core.xml</DocumentationFile>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <DocumentationFile>bin\Release\CopperDevs.Core.xml</DocumentationFile>
-    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="CopperDevs.Core" Version="1.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="8.0.0" />
+    </ItemGroup>
 
     <ItemGroup>
         <None Include="ReadMe.md">
