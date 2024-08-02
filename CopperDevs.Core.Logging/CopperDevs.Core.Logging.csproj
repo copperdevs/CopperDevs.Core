@@ -11,12 +11,13 @@
         <PackageProjectUrl>https://github.com/copperdevs/CopperDevs.Core/tree/master/CopperDevs.Core.Logging</PackageProjectUrl>
         <RepositoryUrl>https://github.com/copperdevs/copperdevs.core</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <AssemblyVersion>1.0.1</AssemblyVersion>
-        <FileVersion>1.0.1</FileVersion>
+        <AssemblyVersion>1.0.2</AssemblyVersion>
+        <FileVersion>1.0.2</FileVersion>
         <PackageLicenseFile>License.txt</PackageLicenseFile>
         <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <Authors>copperdevs</Authors>
+        <Description>Common files used in multiple projects of mine. This is an extension project that adds support for my custom logger class to ILoggingBuilder.</Description>
     </PropertyGroup>
 
     <ItemGroup>
