@@ -8,6 +8,7 @@
     - Matrix2X2
     - Vector2Int
     - Vector3Int
+    - Vector4Int
 - Multiple extensions
 - Custom Random class built on top of the built in system random
 - Text utility

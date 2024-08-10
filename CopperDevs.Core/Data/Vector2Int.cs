@@ -1,6 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Numerics;
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace CopperDevs.Core.Data;
@@ -96,12 +95,12 @@ public struct Vector2Int : IEquatable<Vector2Int>, IFormattable
         return new Vector2Int(left.X - right.X, left.Y - right.Y);
     }
 
-    public static implicit operator Vector2(Vector2Int value)
+    public static implicit operator SystemVector2(Vector2Int value)
     {
-        return new Vector2(value.X, value.Y);
+        return new SystemVector2(value.X, value.Y);
     }
 
-    public static implicit operator Vector2Int(Vector2 value)
+    public static implicit operator Vector2Int(SystemVector2 value)
     {
         return new Vector2Int((int)value.X, (int)value.Y);
     }

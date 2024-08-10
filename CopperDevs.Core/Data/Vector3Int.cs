@@ -1,6 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Numerics;
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace CopperDevs.Core.Data;
@@ -48,7 +47,7 @@ public struct Vector3Int : IEquatable<Vector3Int>, IFormattable
 
     public override bool Equals(object? obj)
     {
-        return obj is Vector2Int vector2Int && Equals(vector2Int);
+        return obj is Vector3Int vector3Int && Equals(vector3Int);
     }
 
     public static bool operator ==(Vector3Int left, Vector3Int right)
@@ -61,53 +60,53 @@ public struct Vector3Int : IEquatable<Vector3Int>, IFormattable
         return !(left == right);
     }
 
-    public static Vector2Int operator +(Vector3Int left, Vector3Int right)
+    public static Vector3Int operator +(Vector3Int left, Vector3Int right)
     {
-        return new Vector2Int(left.X + right.X, left.Y + right.Y);
+        return new Vector3Int(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
     }
 
-    public static Vector2Int operator /(Vector3Int left, Vector3Int right)
+    public static Vector3Int operator /(Vector3Int left, Vector3Int right)
     {
-        return new Vector2Int(left.X / right.X, left.Y / right.Y);
+        return new Vector3Int(left.X / right.X, left.Y / right.Y, left.Z / right.Z);
     }
 
-    public static Vector2Int operator /(Vector3Int value1, int value2)
+    public static Vector3Int operator /(Vector3Int value1, int value2)
     {
         return value1 / new Vector3Int(value2);
     }
 
-    public static Vector2Int operator *(Vector3Int left, Vector3Int right)
+    public static Vector3Int operator *(Vector3Int left, Vector3Int right)
     {
-        return new Vector2Int(left.X * right.X, left.Y * right.Y);
+        return new Vector3Int(left.X * right.X, left.Y * right.Y, left.Z * right.Z);
     }
 
-    public static Vector2Int operator *(Vector3Int left, int right)
+    public static Vector3Int operator *(Vector3Int left, int right)
     {
         return left * new Vector3Int(right);
     }
 
-    public static Vector2Int operator *(int left, Vector3Int right)
+    public static Vector3Int operator *(int left, Vector3Int right)
     {
         return right * left;
     }
 
-    public static Vector2Int operator -(Vector3Int left, Vector3Int right)
+    public static Vector3Int operator -(Vector3Int left, Vector3Int right)
     {
-        return new Vector2Int(left.X - right.X, left.Y - right.Y);
+        return new Vector3Int(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
     }
 
-    public static implicit operator Vector3(Vector3Int value)
+    public static implicit operator SystemVector3(Vector3Int value)
     {
-        return new Vector3(value.X, value.Y, value.Z);
+        return new SystemVector3(value.X, value.Y, value.Z);
     }
 
-    public static implicit operator Vector3Int(Vector3 value)
+    public static implicit operator Vector3Int(SystemVector3 value)
     {
         return new Vector3Int((int)value.X, (int)value.Y, (int)value.Z);
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(X, Y);
+        return HashCode.Combine(X, Y, Z);
     }
 }
