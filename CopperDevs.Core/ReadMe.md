@@ -21,4 +21,4 @@
     - Window position and size
     - Cursor position
     - Get console window handle pointer
-- Custom logger class with multiple logging style
+- Custom logger class with multiple logging style inspired by [PrettyLog](https://github.com/LukynkaCZE/PrettyLog)

@@ -6,4 +6,4 @@
 - [CopperDevs.Core](./CopperDevs.Core)
   - Base project with all the essential items
 - [CopperDevs.Core.Logging](./CopperDevs.Core.Logging)
-  - Extension project that adds support for my custom logger class to ILoggingBuilder
+  - Extension project that adds support for the logger class to ILoggingBuilder
