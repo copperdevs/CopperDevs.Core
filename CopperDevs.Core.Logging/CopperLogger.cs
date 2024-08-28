@@ -2,7 +2,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CopperDevs.Core.Logging;
 
-public sealed class CopperConsoleLogger(string name, Func<CopperConsoleLoggerConfiguration> getCurrentConfig) : ILogger
+public sealed class CopperLogger(string name, Func<CopperLoggerConfiguration> getCurrentConfig) : ILogger
 {
     public IDisposable? BeginScope<TState>(TState state) where TState : notnull => default!;
 

@@ -2,7 +2,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CopperDevs.Core.Logging;
 
-public sealed class CopperConsoleLoggerConfiguration
+public sealed class CopperLoggerConfiguration
 {
     public int EventId { get; init; }
 
