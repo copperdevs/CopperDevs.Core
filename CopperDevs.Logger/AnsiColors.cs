@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace CopperDevs.Core.Logger
+namespace CopperDevs.Logger
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]

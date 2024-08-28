@@ -1,10 +1,10 @@
-namespace CopperDevs.Core.Logger
+namespace CopperDevs.Logger
 {
     public struct CustomLog
     {
-        public AnsiColors.Names MainColor;
-        public AnsiColors.Names BackgroundColor;
-        public string prefix;
+        public readonly AnsiColors.Names MainColor;
+        public readonly AnsiColors.Names BackgroundColor;
+        public readonly string prefix;
 
         public CustomLog(AnsiColors.Names mainColor, AnsiColors.Names backgroundColor, string prefix)
         {

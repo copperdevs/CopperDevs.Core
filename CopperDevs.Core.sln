@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repo", "Repo", "{EC7F5802-4
 		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopperDevs.Core.Logger", "CopperDevs.Core.Logger\CopperDevs.Core.Logger.csproj", "{4B8CB3F3-D74C-47B9-9F4B-418779C9762B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopperDevs.Logger", "CopperDevs.Logger\CopperDevs.Logger.csproj", "{4B8CB3F3-D74C-47B9-9F4B-418779C9762B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
