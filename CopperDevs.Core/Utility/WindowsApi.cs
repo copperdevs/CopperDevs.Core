@@ -164,7 +164,7 @@ public static partial class WindowsApi
     /// Get the position of the mouse cursor in position of the monitors
     /// </summary>
     /// <returns>Mouse position in monitor space</returns>
-    public static Vector2 GetMousePosition()
+    public static SystemVector2 GetMousePosition()
     {
         GetCursorPos(out var point);
         return point;
@@ -181,7 +181,7 @@ public static partial class WindowsApi
         oldWndProc = SetWindowLongPtr(windowHandle, GwlpWndproc, Marshal.GetFunctionPointerForDelegate(newWndProc));
 
         // Restore the original window procedure before exiting
-        // SetWindowLongPtr(hwnd, GWLP_WNDPROC, oldWndProc);
+        // SetWindowLongPtr(hwnd, GwlpWndproc, oldWndProc);
 
         return;
 
@@ -205,12 +205,12 @@ public static partial class WindowsApi
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
     /// <returns>Position of the window</returns>
-    public static Vector2 GetWindowPosition(IntPtr windowHandle)
+    public static SystemVector2 GetWindowPosition(IntPtr windowHandle)
     {
         if (!GetWindowRect(windowHandle, out var rect))
             throw new InvalidOperationException("Unable to get window position.");
 
-        return new Vector2(rect.Left, rect.Top);
+        return new SystemVector2(rect.Left, rect.Top);
     }
 
     /// <summary>
@@ -218,12 +218,12 @@ public static partial class WindowsApi
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
     /// <returns>Size of the widnow</returns>
-    public static Vector2 GetWindowSize(IntPtr windowHandle)
+    public static SystemVector2 GetWindowSize(IntPtr windowHandle)
     {
         if (!GetWindowRect(windowHandle, out var rect))
             throw new InvalidOperationException("Unable to get window size.");
 
-        return new Vector2(rect.Right - rect.Left, rect.Bottom - rect.Top);
+        return new SystemVector2(rect.Right - rect.Left, rect.Bottom - rect.Top);
     }
 
     /// <summary>
@@ -263,17 +263,17 @@ public static partial class WindowsApi
         None,
 
         /// <summary>
-        /// Draw the backdrop material effect corresponding to a long-lived window behind the entire window bounds. For Windows 11, this corresponds to Mica in its default variant. The material effect might change with future Windows releases. For more info about Mica, see https://learn.microsoft.com/en-us/windows/apps/design/style/mica.
+        /// Draw the backdrop material effect corresponding to a long-lived window behind the entire window bounds. For Windows 11, this corresponds to Mica in its default variant. The material effect might change with future Windows releases. For more info about Mica, see <see href="https://learn.microsoft.com/en-us/windows/apps/design/style/mica"/>
         /// </summary>
         Mica,
 
         /// <summary>
-        /// Draw the backdrop material effect corresponding to a transient window behind the entire window bounds. For Windows 11, this corresponds to Desktop Acrylic, also known as Background Acrylic, in its brightest variant. The material effect might change with future Windows releases. For more info about Desktop Acrylic, see https://learn.microsoft.com/en-us/windows/apps/design/style/acrylic
+        /// Draw the backdrop material effect corresponding to a transient window behind the entire window bounds. For Windows 11, this corresponds to Desktop Acrylic, also known as Background Acrylic, in its brightest variant. The material effect might change with future Windows releases. For more info about Desktop Acrylic, see <see href="https://learn.microsoft.com/en-us/windows/apps/design/style/acrylic"/>
         /// </summary>
         Acrylic,
 
         /// <summary>
-        /// Draw the backdrop material effect corresponding to a window with a tabbed title bar behind the entire window bounds. For Windows 11, this corresponds to Mica in its alternate variant (Mica Alt). The material might change with future releases of Windows. For more info about Mica Alt, see https://learn.microsoft.com/en-us/windows/apps/design/style/mica#app-layering-with-mica-alt
+        /// Draw the backdrop material effect corresponding to a window with a tabbed title bar behind the entire window bounds. For Windows 11, this corresponds to Mica in its alternate variant (Mica Alt). The material might change with future releases of Windows. For more info about Mica Alt, see <see href="https://learn.microsoft.com/en-us/windows/apps/design/style/mica#app-layering-with-mica-alt"/>
         /// </summary>
         Tabbed
     }
@@ -404,7 +404,7 @@ public static partial class WindowsApi
         public int y;
 
         public static implicit operator Vector2Int(Point point) => new(point.x, point.y);
-        public static implicit operator Vector2(Point point) => new(point.x, point.y);
+        public static implicit operator SystemVector2(Point point) => new(point.x, point.y);
     }
 
     [StructLayout(LayoutKind.Sequential)]

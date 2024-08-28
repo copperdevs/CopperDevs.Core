@@ -25,9 +25,9 @@ public static class MathUtil
     /// <remarks>
     /// https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
     /// </remarks>
-    public static Vector3 ToEulerAngles(Quaternion quaternion)
+    public static SystemVector3 ToEulerAngles(Quaternion quaternion)
     {
-        Vector3 angles;
+        SystemVector3 angles;
 
         // roll (x-axis rotation)
         var sinrCosp = 2 * (quaternion.W * quaternion.X + quaternion.Y * quaternion.Z);
@@ -53,7 +53,7 @@ public static class MathUtil
     /// <remarks>
     /// https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
     /// </remarks>
-    public static Quaternion FromEulerAngles(Vector3 euler)
+    public static Quaternion FromEulerAngles(SystemVector3 euler)
     {
         var cr = MathF.Cos(euler.X * 0.5f);
         var sr = MathF.Sin(euler.X * 0.5f);
@@ -102,7 +102,7 @@ public static class MathUtil
     /// <param name="value">Value to clamp</param>
     /// <param name="range">Range of the values to clamp</param>
     /// <returns>The clamped value</returns>
-    public static float Clamp(float value, Vector2 range)
+    public static float Clamp(float value, SystemVector2 range)
     {
         return value < range.X ? range.X : value > range.Y ? range.Y : value;
     }
@@ -113,7 +113,7 @@ public static class MathUtil
     /// <param name="value">Value to clamp</param>
     /// <param name="range">Range of the values to clamp</param>
     /// <returns>The clamped value</returns>
-    public static int Clamp(int value, Vector2 range)
+    public static int Clamp(int value, SystemVector2 range)
     {
         return value < (int)range.X ? (int)range.X : value > (int)range.Y ? (int)range.Y : value;
     }
@@ -136,7 +136,7 @@ public static class MathUtil
     /// <param name="min">Minimum value of the clamp range</param>
     /// <param name="max">Maximum value of the clamp range</param>
     /// <returns>The clamped value</returns>
-    public static Vector3 Clamp(Vector3 value, Vector3 min, Vector3 max)
+    public static SystemVector3 Clamp(SystemVector3 value, SystemVector3 min, SystemVector3 max)
     {
         value.X = Clamp(value.X, min.X, max.X);
         value.Y = Clamp(value.Y, min.Y, max.Y);
@@ -180,17 +180,17 @@ public static class MathUtil
     /// <param name="b">End value</param>
     /// <param name="t">Value used to interpolate between a and b.</param>
     /// <returns>Interpolated value</returns>
-    public static Vector3 Lerp(Vector3 a, Vector3 b, float t)
+    public static SystemVector3 Lerp(SystemVector3 a, SystemVector3 b, float t)
     {
         t = Clamp(t, 0, 1);
 
-        var distance = new Vector3(b.X - a.X, b.Y - a.Y, b.Z - a.Z);
+        var distance = new SystemVector3(b.X - a.X, b.Y - a.Y, b.Z - a.Z);
 
         var x = a.X + distance.X * t;
         var y = a.Y + distance.Y * t;
         var z = a.Z + distance.Z * t;
 
-        return new Vector3(x, y, z);
+        return new SystemVector3(x, y, z);
     }
 
     /// <summary>
@@ -200,16 +200,16 @@ public static class MathUtil
     /// <param name="b">End value</param>
     /// <param name="t">Value used to interpolate between a and b.</param>
     /// <returns>Interpolated value</returns>
-    public static Vector2 Lerp(Vector2 a, Vector2 b, float t)
+    public static SystemVector2 Lerp(SystemVector2 a, SystemVector2 b, float t)
     {
         t = Clamp(t, 0, 1);
 
-        var distance = new Vector2(b.X - a.X, b.Y - a.Y);
+        var distance = new SystemVector2(b.X - a.X, b.Y - a.Y);
 
         var x = a.X + distance.X * t;
         var y = a.Y + distance.Y * t;
 
-        return new Vector2(x, y);
+        return new SystemVector2(x, y);
     }
 
     /// <summary>
@@ -221,9 +221,9 @@ public static class MathUtil
     /// <param name="outputMin">Minimum range of the output vector</param>
     /// <param name="outputMax">Maximum range of the output vector</param>
     /// <returns>V</returns>
-    public static Vector2 ReMap(Vector2 input, Vector2 inputMin, Vector2 inputMax, Vector2 outputMin, Vector2 outputMax)
+    public static SystemVector2 ReMap(SystemVector2 input, SystemVector2 inputMin, SystemVector2 inputMax, SystemVector2 outputMin, SystemVector2 outputMax)
     {
-        return new Vector2
+        return new SystemVector2
         (
             ReMap(input.X, inputMin.X, inputMax.X, outputMin.X, outputMax.X),
             ReMap(input.Y, inputMin.Y, inputMax.Y, outputMin.Y, outputMax.Y)
@@ -235,9 +235,9 @@ public static class MathUtil
     /// </summary>
     /// <param name="rotation">Degrees</param>
     /// <returns>Vector2 rotated unit vector</returns>
-    public static Vector2 CreateRotatedUnitVector(float rotation)
+    public static SystemVector2 CreateRotatedUnitVector(float rotation)
     {
-        return new Vector2(MathF.Cos(-rotation * (MathF.PI / 180)), MathF.Sin(-rotation * (MathF.PI / 180)));
+        return new SystemVector2(MathF.Cos(-rotation * (MathF.PI / 180)), MathF.Sin(-rotation * (MathF.PI / 180)));
     }
 
     /// <summary>
@@ -246,7 +246,7 @@ public static class MathUtil
     /// <param name="a">First vector</param>
     /// <param name="b">Second vector</param>
     /// <returns>The cross product</returns>
-    public static float CrossProduct(Vector2 a, Vector2 b)
+    public static float CrossProduct(SystemVector2 a, SystemVector2 b)
     {
         return a.X * b.Y - a.Y * b.X;
     }
@@ -257,9 +257,9 @@ public static class MathUtil
     /// <param name="a">Vector</param>
     /// <param name="s">Value</param>
     /// <returns>The cross product</returns>
-    public static Vector2 CrossProduct(Vector2 a, float s)
+    public static SystemVector2 CrossProduct(SystemVector2 a, float s)
     {
-        return new Vector2(s * a.Y, -s * a.X);
+        return new SystemVector2(s * a.Y, -s * a.X);
     }
 
 
@@ -269,9 +269,9 @@ public static class MathUtil
     /// <param name="s">Value</param>
     /// <param name="a">Vector</param>
     /// <returns>The cross product</returns>
-    public static Vector2 CrossProduct(float s, Vector2 a)
+    public static SystemVector2 CrossProduct(float s, SystemVector2 a)
     {
-        return new Vector2(-s * a.Y, s * a.X);
+        return new SystemVector2(-s * a.Y, s * a.X);
     }
 
     /// <summary>
@@ -279,7 +279,7 @@ public static class MathUtil
     /// </summary>
     /// <param name="vector">Target vector</param>
     /// <returns>The length</returns>
-    public static float Length(Vector2 vector)
+    public static float Length(SystemVector2 vector)
     {
         return MathF.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
     }
@@ -289,7 +289,7 @@ public static class MathUtil
     /// </summary>
     /// <param name="vector">Target vector</param>
     /// <returns>Magnitude of the vector</returns>
-    public static float Magnitude(Vector3 vector)
+    public static float Magnitude(SystemVector3 vector)
     {
         return MathF.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z);
     }
@@ -299,7 +299,7 @@ public static class MathUtil
     /// </summary>
     /// <param name="vector">Target vector</param>
     /// <returns>The square length of the vector</returns>
-    public static float SqrLength(Vector2 vector)
+    public static float SqrLength(SystemVector2 vector)
     {
         return vector.X * vector.X + vector.Y * vector.Y;
     }
@@ -309,7 +309,7 @@ public static class MathUtil
     /// </summary>
     /// <param name="vector">Vector to normalize</param>
     /// <returns>The normalized vector</returns>
-    public static Vector2 Normalized(Vector2 vector)
+    public static SystemVector2 Normalized(SystemVector2 vector)
     {
         return vector * (1 / Length(vector));
     }
