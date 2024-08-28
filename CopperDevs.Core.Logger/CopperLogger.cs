@@ -115,8 +115,9 @@ namespace CopperDevs.Core.Logger
         /// </summary>
         public static bool IncludeTimestamps = true;
 
-        public static void Log(CustomLog log)
+        public static void Log(object message, CustomLog log)
         {
+            LogMessage(log.MainColor, log.BackgroundColor, log.prefix, message);
         }
 
         internal static void LogMessage(Names colorName, string prefix, object message)
