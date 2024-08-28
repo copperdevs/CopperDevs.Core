@@ -11,14 +11,14 @@ public static class Extensions
     {
         builder.AddConfiguration();
 
-        builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, CopperLoggerProvider>());
+        builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, CopperLoggingProvider>());
 
-        LoggerProviderOptions.RegisterProviderOptions<CopperLoggerConfiguration, CopperLoggerProvider>(builder.Services);
+        LoggerProviderOptions.RegisterProviderOptions<CopperLoggingConfiguration, CopperLoggingProvider>(builder.Services);
 
         return builder;
     }
 
-    public static ILoggingBuilder AddCopperLogger(this ILoggingBuilder builder, Action<CopperLoggerConfiguration> configure)
+    public static ILoggingBuilder AddCopperLogger(this ILoggingBuilder builder, Action<CopperLoggingConfiguration> configure)
     {
         builder.AddCopperLogger();
         builder.Services.Configure(configure);

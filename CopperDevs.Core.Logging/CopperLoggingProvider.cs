@@ -7,21 +7,21 @@ namespace CopperDevs.Core.Logging;
 
 [UnsupportedOSPlatform("browser")]
 [ProviderAlias("CopperLogger")]
-public sealed class CopperLoggerProvider : ILoggerProvider
+public sealed class CopperLoggingProvider : ILoggerProvider
 {
     private readonly IDisposable? onChangeToken;
-    private CopperLoggerConfiguration currentConfig;
-    private readonly ConcurrentDictionary<string, CopperLogger> loggers = new(StringComparer.OrdinalIgnoreCase);
+    private CopperLoggingConfiguration currentConfig;
+    private readonly ConcurrentDictionary<string, CopperLogging> loggers = new(StringComparer.OrdinalIgnoreCase);
 
-    public CopperLoggerProvider(IOptionsMonitor<CopperLoggerConfiguration> config)
+    public CopperLoggingProvider(IOptionsMonitor<CopperLoggingConfiguration> config)
     {
         currentConfig = config.CurrentValue;
         onChangeToken = config.OnChange(updatedConfig => currentConfig = updatedConfig);
     }
 
-    public ILogger CreateLogger(string categoryName) => loggers.GetOrAdd(categoryName, name => new CopperLogger(name, GetCurrentConfig));
+    public ILogger CreateLogger(string categoryName) => loggers.GetOrAdd(categoryName, name => new CopperLogging(name, GetCurrentConfig));
 
-    private CopperLoggerConfiguration GetCurrentConfig() => currentConfig;
+    private CopperLoggingConfiguration GetCurrentConfig() => currentConfig;
 
     public void Dispose()
     {
