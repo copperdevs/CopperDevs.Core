@@ -18,6 +18,16 @@ public static class MathUtil
     {
         return MathF.PI / 180f * degrees;
     }
+    
+    /// <summary>
+    /// Convert radians to degrees
+    /// </summary>
+    /// <param name="radians">Radians</param>
+    /// <returns>The input radians value in degrees</returns>
+    public static float RadiansToDegrees(float radians)
+    {
+        return radians * (180f / MathF.PI);
+    }
 
     /// <summary>
     /// 
@@ -35,9 +45,8 @@ public static class MathUtil
         angles.X = MathF.Atan2(sinrCosp, cosrCosp);
 
         // pitch (y-axis rotation)
-        var sinp = MathF.Sqrt(1 + 2 * (quaternion.W * quaternion.Y - quaternion.X * quaternion.Z));
-        var cosp = MathF.Sqrt(1 - 2 * (quaternion.W * quaternion.Y - quaternion.X * quaternion.Z));
-        angles.Y = 2 * MathF.Atan2(sinp, cosp) - MathF.PI / 2;
+        var sinp = 2 * (quaternion.W * quaternion.Y - quaternion.Z * quaternion.X);
+        angles.Y = MathF.Abs(sinp) >= 1 ? MathF.CopySign(MathF.PI / 2, sinp) : MathF.Asin(sinp);
 
         // yaw (z-axis rotation)
         var sinyCosp = 2 * (quaternion.W * quaternion.Z + quaternion.X * quaternion.Y);
@@ -46,6 +55,7 @@ public static class MathUtil
 
         return angles;
     }
+
 
     /// <summary>
     /// 
@@ -293,7 +303,7 @@ public static class MathUtil
     {
         return MathF.Sqrt(vector.X * vector.X + vector.Y * vector.Y + vector.Z * vector.Z);
     }
-    
+
     /// <summary>
     /// Get the square length of a vector
     /// </summary>
