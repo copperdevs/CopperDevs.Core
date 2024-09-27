@@ -1,3 +1,4 @@
+using CopperDevs.Logger;
 using Microsoft.Extensions.Logging;
 
 namespace CopperDevs.Core.Logging;

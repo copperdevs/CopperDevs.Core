@@ -4,7 +4,7 @@
 
 ## Dependencies
 
-- [CopperDevs.Core](https://www.nuget.org/packages/CopperDevs.Core)
+- [CopperDevs.Logger](https://www.nuget.org/packages/CopperDevs.Logger)
 - [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)
 - [Microsoft.Extensions.Logging.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Configuration/)
 
