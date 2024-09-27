@@ -5,8 +5,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <AssemblyVersion>1.1.1</AssemblyVersion>
-        <FileVersion>1.1.1</FileVersion>
+        <AssemblyVersion>1.1.2</AssemblyVersion>
+        <FileVersion>1.1.2</FileVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>CopperDevs.Core</Title>
         <Copyright>MIT</Copyright>
@@ -17,7 +17,7 @@
         <PackageLicenseFile>License.txt</PackageLicenseFile>
         <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
         <Authors>copperdevs</Authors>
-        <Version>1.1.1</Version>
+        <Version>1.1.2</Version>
         <Description>Common files used in multiple projects of mine. This is the base project with all the essential items.</Description>
     </PropertyGroup>
 
