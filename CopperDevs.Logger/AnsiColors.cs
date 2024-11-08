@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace CopperDevs.Logger
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public static class AnsiColors
     {
         private static string ForeColor(int code) => $"\u001B[38;5;{code}m";

@@ -1,6 +1,6 @@
 namespace CopperDevs.Logger
 {
-    public struct CustomLog
+    public readonly struct CustomLog
     {
         public readonly AnsiColors.Names MainColor;
         public readonly AnsiColors.Names BackgroundColor;
