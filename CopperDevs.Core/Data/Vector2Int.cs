@@ -4,27 +4,23 @@ using System.Globalization;
 
 namespace CopperDevs.Core.Data;
 
-public struct Vector2Int : IEquatable<Vector2Int>, IFormattable
+public struct Vector2Int(int x, int y) : IEquatable<Vector2Int>, IFormattable
 {
-    public int X;
-    public int Y;
+    public int X = x;
+    public int Y = y;
 
     public static Vector2Int Zero => default;
     public static Vector2Int One => new(1);
     public static Vector2Int UnitX => new(1, 0);
     public static Vector2Int UnitY => new(0, 1);
 
+    public Vector2Int() : this(0, 0) { }
+
     public Vector2Int(int value) : this(value, value)
     {
     }
 
-    public Vector2Int(int x, int y)
-    {
-        X = x;
-        Y = y;
-    }
-
-    public bool Equals(Vector2Int other)
+    public readonly bool Equals(Vector2Int other)
     {
         return X.Equals(other.X) && Y.Equals(other.Y);
     }
@@ -45,7 +41,7 @@ public struct Vector2Int : IEquatable<Vector2Int>, IFormattable
         return $"<{X.ToString(format, formatProvider)}{separator} {Y.ToString(format, formatProvider)}>";
     }
 
-    public override bool Equals(object? obj)
+    public override readonly bool Equals(object? obj)
     {
         return obj is Vector2Int vector2Int && Equals(vector2Int);
     }
@@ -105,7 +101,7 @@ public struct Vector2Int : IEquatable<Vector2Int>, IFormattable
         return new Vector2Int((int)value.X, (int)value.Y);
     }
 
-    public override int GetHashCode()
+    public override readonly int GetHashCode()
     {
         return HashCode.Combine(X, Y);
     }

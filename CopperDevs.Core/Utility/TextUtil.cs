@@ -8,7 +8,7 @@ namespace CopperDevs.Core.Utility;
 public static partial class TextUtil
 {
     /// <summary>
-    /// Convert a string to title case
+    /// Converts a string to use title case
     /// </summary>
     /// <param name="input">Input text</param>
     /// <returns>Input text converted to title case</returns>
@@ -25,6 +25,22 @@ public static partial class TextUtil
         return result;
     }
 
+    /// <summary>
+    /// Converts a string to use kebab case
+    /// </summary>
+    /// <param name="input">Input text</param>
+    /// <returns>Input text in kebab case</returns>
+    public static string ToKebabCase(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return input;
+
+        return KebabCaseRegex().Replace(input, "-$1").ToLower();
+    }
+
     [GeneratedRegex("(\\B[A-Z])")]
     private static partial Regex TitleCaseRegex();
+
+    [GeneratedRegex(@"(?<!^)(?<!-)((?<=\p{Ll})\p{Lu}|\p{Lu}(?=\p{Ll}))")]
+    private static partial Regex KebabCaseRegex();
 }

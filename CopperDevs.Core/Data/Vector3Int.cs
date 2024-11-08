@@ -4,27 +4,23 @@ using System.Globalization;
 
 namespace CopperDevs.Core.Data;
 
-public struct Vector3Int : IEquatable<Vector3Int>, IFormattable
+public struct Vector3Int(int x, int y, int z) : IEquatable<Vector3Int>, IFormattable
 {
-    public int X;
-    public int Y;
-    public int Z;
+    public int X = x;
+    public int Y = y;
+    public int Z = z;
 
     public static Vector3Int Zero => default;
     public static Vector3Int One => new(1);
+
+
+    public Vector3Int() : this(0, 0, 0) { }
 
     public Vector3Int(int value) : this(value, value, value)
     {
     }
 
-    public Vector3Int(int x, int y, int z)
-    {
-        X = x;
-        Y = y;
-        Z = z;
-    }
-
-    public bool Equals(Vector3Int other)
+    public readonly bool Equals(Vector3Int other)
     {
         return X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
     }
@@ -105,7 +101,7 @@ public struct Vector3Int : IEquatable<Vector3Int>, IFormattable
         return new Vector3Int((int)value.X, (int)value.Y, (int)value.Z);
     }
 
-    public override int GetHashCode()
+    public override readonly int GetHashCode()
     {
         return HashCode.Combine(X, Y, Z);
     }

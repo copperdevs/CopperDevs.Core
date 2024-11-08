@@ -1,5 +1,5 @@
-﻿using System.Numerics;
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+using System.Numerics;
 
 namespace CopperDevs.Core.Data;
 
@@ -7,42 +7,34 @@ namespace CopperDevs.Core.Data;
 /// <summary>
 /// Represents a 2x2 matrix.
 /// </summary>
-public struct Matrix2X2
+/// <remarks>
+/// Create a new 2x2 matrix with all values set
+/// </remarks>
+/// <param name="M00">First element of the first row</param>
+/// <param name="M01">Second element of the first row</param>
+/// <param name="M10">First element of the second row</param>
+/// <param name="M11">Second element of the second row</param>
+public struct Matrix2X2(float M00, float M01, float M10, float M11)
 {
     /// <summary>
     /// The first element of the first row
     /// </summary>
-    public float M00;
-    
+    public float M00 = M00;
+
     /// <summary>
     /// The second element of the first row
     /// </summary>
-    public float M01;
-    
+    public float M01 = M01;
+
     /// <summary>
     /// The first element of the second row
     /// </summary>
-    public float M10;
-    
+    public float M10 = M10;
+
     /// <summary>
     /// The second element of the second row
     /// </summary>
-    public float M11;
-
-    /// <summary>
-    /// Create a new 2x2 matrix with all values set
-    /// </summary>
-    /// <param name="newM00">Value of the first element of the first row</param>
-    /// <param name="newM01">Value of the second element of the first row</param>
-    /// <param name="newM10">Value of the first element of the second row</param>
-    /// <param name="newM11">Value of the second element of the second row</param>
-    public Matrix2X2(float newM00, float newM01, float newM10, float newM11)
-    {
-        M00 = newM00;
-        M01 = newM01;
-        M10 = newM10;
-        M11 = newM11;
-    }
+    public float M11 = M11;
 
     /// <summary>
     /// Set the matrix rotation from radians
@@ -63,10 +55,11 @@ public struct Matrix2X2
     /// Create a transposed matrix
     /// </summary>
     /// <returns>The created matrix</returns>
-    public Matrix2X2 Transpose()
+    public readonly Matrix2X2 Transpose()
     {
         return new Matrix2X2(M00, M10, M01, M11);
     }
+
     public static Vector2 operator *(Matrix2X2 matrix, Vector2 vector)
     {
         return new Vector2(matrix.M00 * vector.X + matrix.M01 * vector.Y, matrix.M10 * vector.X + matrix.M11 * vector.Y);

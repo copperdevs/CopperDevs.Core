@@ -4,29 +4,24 @@ using System.Globalization;
 
 namespace CopperDevs.Core.Data;
 
-public struct Vector4Int
+public struct Vector4Int(int x, int y, int z, int w)
 {
-    public int X;
-    public int Y;
-    public int Z;
-    public int W;
+    public int X = x;
+    public int Y = y;
+    public int Z = z;
+    public int W = w;
 
     public static Vector3Int Zero => default;
     public static Vector3Int One => new(1);
+
+
+    public Vector4Int() : this(0, 0, 0, 0) { }
 
     public Vector4Int(int value) : this(value, value, value, value)
     {
     }
 
-    public Vector4Int(int x, int y, int z, int w)
-    {
-        X = x;
-        Y = y;
-        Z = z;
-        W = w;
-    }
-
-    public bool Equals(Vector4Int other)
+    public readonly bool Equals(Vector4Int other)
     {
         return X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z) && W.Equals(other.W);
     }
@@ -47,7 +42,7 @@ public struct Vector4Int
         return $"<{X.ToString(format, formatProvider)}{separator} {Y.ToString(format, formatProvider)}>";
     }
 
-    public override bool Equals(object? obj)
+    public override readonly bool Equals(object? obj)
     {
         return obj is Vector3Int vector3Int && Equals(vector3Int);
     }
@@ -107,7 +102,7 @@ public struct Vector4Int
         return new Vector4Int((int)value.X, (int)value.Y, (int)value.Z, (int)value.W);
     }
 
-    public override int GetHashCode()
+    public override readonly int GetHashCode()
     {
         return HashCode.Combine(X, Y, Z, W);
     }

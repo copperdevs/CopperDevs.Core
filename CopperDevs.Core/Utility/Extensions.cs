@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Reflection;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -11,33 +12,33 @@ public static class Extensions
 
     public static SystemVector4 ToVector(this Quaternion quaternion) => new(quaternion.X, quaternion.Y, quaternion.Z, quaternion.W);
     public static Quaternion ToQuaternion(this SystemVector4 vector) => new(vector.X, vector.Y, vector.Z, vector.W);
-    
+
     public static Quaternion FromEulerAngles(this SystemVector3 euler) => MathUtil.FromEulerAngles(euler);
     public static SystemVector3 ToEulerAngles(this Quaternion quaternion) => MathUtil.ToEulerAngles(quaternion);
-    
+
     public static SystemVector3 Clamp(this SystemVector3 value, SystemVector3 min, SystemVector3 max) => MathUtil.Clamp(value, min, max);
-    
+
     public static SystemVector2 ToRotatedUnitVector(this float value) => MathUtil.CreateRotatedUnitVector(value);
-    
+
     public static SystemVector2 WithX(this SystemVector2 vector, float value) => vector with { X = value };
     public static SystemVector2 WithY(this SystemVector2 vector, float value) => vector with { Y = value };
-    
+
     public static SystemVector3 WithX(this SystemVector3 vector, float value) => vector with { X = value };
     public static SystemVector3 WithY(this SystemVector3 vector, float value) => vector with { Y = value };
     public static SystemVector3 WithZ(this SystemVector3 vector, float value) => vector with { Z = value };
-    
+
     public static SystemVector4 WithX(this SystemVector4 vector, float value) => vector with { X = value };
     public static SystemVector4 WithY(this SystemVector4 vector, float value) => vector with { Y = value };
     public static SystemVector4 WithZ(this SystemVector4 vector, float value) => vector with { Z = value };
     public static SystemVector4 WithW(this SystemVector4 vector, float value) => vector with { W = value };
-    
+
     public static SystemVector2 FlipX(this SystemVector2 vector) => vector with { X = -vector.X };
     public static SystemVector2 FlipY(this SystemVector2 vector) => vector with { Y = -vector.Y };
-    
+
     public static SystemVector3 FlipX(this SystemVector3 vector) => vector with { X = -vector.X };
     public static SystemVector3 FlipY(this SystemVector3 vector) => vector with { Y = -vector.Y };
     public static SystemVector3 FlipZ(this SystemVector3 vector) => vector with { Z = -vector.Z };
-    
+
     public static SystemVector4 FlipX(this SystemVector4 vector) => vector with { X = -vector.X };
     public static SystemVector4 FlipY(this SystemVector4 vector) => vector with { Y = -vector.Y };
     public static SystemVector4 FlipZ(this SystemVector4 vector) => vector with { Z = -vector.Z };
@@ -86,7 +87,7 @@ public static class Extensions
         );
     }
 
-    public static int EnumToInt<T>(this T value) where T : Enum
+    public static int ToInt<T>(this T value) where T : Enum
     {
         return (int)(object)value;
     }
@@ -109,5 +110,20 @@ public static class Extensions
     public static int ToInt(this bool value)
     {
         return value ? 1 : 0;
+    }
+
+    /// <summary>
+    /// Get all public static values from a certain value
+    /// </summary>
+    /// <param name="type">Type of the class to get the values from</param>
+    /// <typeparam name="T">Field type</typeparam>
+    /// <returns>List of found types</returns>
+    public static List<T> GetAllPublicConstantValues<T>(this Type type)
+    {
+        return type
+            .GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
+            .Where(fi => fi is { IsLiteral: true, IsInitOnly: false } && fi.FieldType == typeof(T))
+            .Select(x => (T)x.GetRawConstantValue()!)
+            .ToList();
     }
 }
