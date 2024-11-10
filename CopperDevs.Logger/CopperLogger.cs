@@ -14,7 +14,7 @@ namespace CopperDevs.Logger
 
         public static void Log(object message, CustomLog log)
         {
-            LogMessage(log.MainColor, log.BackgroundColor, log.prefix, message);
+            LogMessage(log.MainColor, log.BackgroundColor, log.Prefix, message);
         }
 
         internal static void LogMessage(AnsiColors.Names colorName, string prefix, object message)
@@ -22,7 +22,7 @@ namespace CopperDevs.Logger
             LogMessage(colorName, colorName, prefix, message);
         }
 
-        internal static void LogMessage(AnsiColors.Names colorName, AnsiColors.Names backgroundColorName, string prefix, object message)
+        private static void LogMessage(AnsiColors.Names colorName, AnsiColors.Names backgroundColorName, string prefix, object message)
         {
             var color = AnsiColors.GetColor(colorName);
             var backgroundColor = AnsiColors.GetBackgroundColor(backgroundColorName);
