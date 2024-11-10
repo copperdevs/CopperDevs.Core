@@ -14,11 +14,12 @@
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageProjectUrl>https://github.com/copperdevs/CopperDevs.Core/tree/master/CopperDevs.Logger</PackageProjectUrl>
         <RepositoryUrl>https://github.com/copperdevs/CopperDevs.Core/</RepositoryUrl>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
-        <FileVersion>1.0.0</FileVersion>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <FileVersion>1.0.1</FileVersion>
         <TargetFramework>netstandard2.0</TargetFramework>
         <PackageLicenseFile>License.txt</PackageLicenseFile>
         <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+        <Version>1.0.1</Version>
     </PropertyGroup>
     
     <ItemGroup>
