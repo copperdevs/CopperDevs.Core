@@ -1,7 +1,7 @@
 ﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using System.Numerics;
 
-namespace CopperDevs.Core.Data;
+namespace CopperDevs.Core.Mathematics;
 
 // https://www.codeproject.com/Articles/1029858/Making-a-D-Physics-Engine-The-Math
 /// <summary>
@@ -10,31 +10,31 @@ namespace CopperDevs.Core.Data;
 /// <remarks>
 /// Create a new 2x2 matrix with all values set
 /// </remarks>
-/// <param name="M00">First element of the first row</param>
-/// <param name="M01">Second element of the first row</param>
-/// <param name="M10">First element of the second row</param>
-/// <param name="M11">Second element of the second row</param>
-public struct Matrix2X2(float M00, float M01, float M10, float M11)
+/// <param name="m00">First element of the first row</param>
+/// <param name="m01">Second element of the first row</param>
+/// <param name="m10">First element of the second row</param>
+/// <param name="m11">Second element of the second row</param>
+public struct Matrix2X2(float m00, float m01, float m10, float m11)
 {
     /// <summary>
     /// The first element of the first row
     /// </summary>
-    public float M00 = M00;
+    public float M00 = m00;
 
     /// <summary>
     /// The second element of the first row
     /// </summary>
-    public float M01 = M01;
+    public float M01 = m01;
 
     /// <summary>
     /// The first element of the second row
     /// </summary>
-    public float M10 = M10;
+    public float M10 = m10;
 
     /// <summary>
     /// The second element of the second row
     /// </summary>
-    public float M11 = M11;
+    public float M11 = m11;
 
     /// <summary>
     /// Set the matrix rotation from radians

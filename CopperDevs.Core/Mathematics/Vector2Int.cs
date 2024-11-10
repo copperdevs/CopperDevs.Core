@@ -1,8 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-namespace CopperDevs.Core.Data;
+namespace CopperDevs.Core.Mathematics;
 
 public struct Vector2Int(int x, int y) : IEquatable<Vector2Int>, IFormattable
 {
