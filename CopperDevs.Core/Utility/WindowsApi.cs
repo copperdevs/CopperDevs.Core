@@ -3,7 +3,7 @@ using System;
 using System.Windows;
 using System.Drawing;
 using System.Numerics;
-using CopperDevs.Core.Mathematics;
+using CopperDevs.Core.Data;
 
 namespace CopperDevs.Core.Utility;
 

@@ -3,7 +3,7 @@ using System.Globalization;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-namespace CopperDevs.Core.Mathematics;
+namespace CopperDevs.Core.Data;
 
 public struct Vector2Int(int x, int y) : IEquatable<Vector2Int>, IFormattable
 {
