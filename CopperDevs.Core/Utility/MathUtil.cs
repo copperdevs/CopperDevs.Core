@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using CopperDevs.Core.Mathematics;
+using CopperDevs.Core.Data;
 
 namespace CopperDevs.Core.Utility;
 

@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
-namespace CopperDevs.Core.Mathematics;
+namespace CopperDevs.Core.Data;
 
 public struct Vector2 : IEquatable<Vector2>
 {

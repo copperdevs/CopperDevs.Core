@@ -1,7 +1,5 @@
 ﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-using System.Numerics;
-
-namespace CopperDevs.Core.Mathematics;
+namespace CopperDevs.Core.Data;
 
 // https://www.codeproject.com/Articles/1029858/Making-a-D-Physics-Engine-The-Math
 /// <summary>
