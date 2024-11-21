@@ -126,4 +126,19 @@ public static class Extensions
             .Select(x => (T)x.GetRawConstantValue()!)
             .ToList();
     }
+
+
+    public static Vector2 WithoutX(this Vector3 vector) => new(vector.Y, vector.Z);
+
+    public static Vector2 WithoutY(this Vector3 vector) => new(vector.X, vector.Z);
+
+    public static Vector2 WithoutZ(this Vector3 vector) => new(vector.X, vector.Y);
+
+    public static Vector3 WithoutX(this Vector4 vector) => new(vector.Y, vector.Z, vector.W);
+
+    public static Vector3 WithoutY(this Vector4 vector) => new(vector.X, vector.Z, vector.W);
+
+    public static Vector3 WithoutZ(this Vector4 vector) => new(vector.X, vector.Y, vector.W);
+
+    public static Vector3 WithoutW(this Vector4 vector) => new(vector.X, vector.Y, vector.Z);
 }
