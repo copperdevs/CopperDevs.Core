@@ -1,10 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace CopperDevs.Core.Data;
 
-public struct Vector4Int(int x, int y, int z, int w)
+public struct Vector4Int(int x, int y, int z, int w) : IEquatable<Vector4Int>
 {
     public int X = x;
     public int Y = y;
@@ -42,7 +43,7 @@ public struct Vector4Int(int x, int y, int z, int w)
         return $"<{X.ToString(format, formatProvider)}{separator} {Y.ToString(format, formatProvider)}>";
     }
 
-    public override readonly bool Equals(object? obj)
+    public readonly override bool Equals(object? obj)
     {
         return obj is Vector3Int vector3Int && Equals(vector3Int);
     }

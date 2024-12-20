@@ -32,10 +32,7 @@ public static partial class TextUtil
     /// <returns>Input text in kebab case</returns>
     public static string ToKebabCase(string input)
     {
-        if (string.IsNullOrEmpty(input))
-            return input;
-
-        return KebabCaseRegex().Replace(input, "-$1").ToLower();
+        return string.IsNullOrEmpty(input) ? input : KebabCaseRegex().Replace(input, "-$1").ToLower();
     }
 
     [GeneratedRegex("(\\B[A-Z])")]

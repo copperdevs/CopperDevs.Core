@@ -5,7 +5,7 @@ public abstract class Scope : IDisposable
 {
     private bool disposed;
 
-    internal virtual void Dispose(bool disposing)
+    protected virtual void Dispose(bool disposing)
     {
         if (disposed)
             return;
