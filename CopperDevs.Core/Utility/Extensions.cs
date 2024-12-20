@@ -141,4 +141,9 @@ public static class Extensions
     public static Vector3 WithoutZ(this Vector4 vector) => new(vector.X, vector.Y, vector.W);
 
     public static Vector3 WithoutW(this Vector4 vector) => new(vector.X, vector.Y, vector.Z);
+
+    public static bool Implements<TI>(this Type source) where TI : class
+    {
+        return typeof(TI).IsAssignableFrom(source);
+    }
 }
