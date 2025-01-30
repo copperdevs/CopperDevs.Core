@@ -127,7 +127,6 @@ public static class Extensions
             .ToList();
     }
 
-
     public static Vector2 WithoutX(this Vector3 vector) => new(vector.Y, vector.Z);
 
     public static Vector2 WithoutY(this Vector3 vector) => new(vector.X, vector.Z);
@@ -141,4 +140,59 @@ public static class Extensions
     public static Vector3 WithoutZ(this Vector4 vector) => new(vector.X, vector.Y, vector.W);
 
     public static Vector3 WithoutW(this Vector4 vector) => new(vector.X, vector.Y, vector.Z);
+
+    public static bool Implements<TI>(this Type source) where TI : class
+    {
+        return typeof(TI).IsAssignableFrom(source);
+    }
+
+    /// <summary>
+    /// Checks if a type contains any fields or properties matching the specified criteria.
+    /// </summary>
+    /// <param name="type">The type to inspect.</param>
+    /// <param name="predicate">Optional predicate to filter members. Defaults to no filter.</param>
+    /// <param name="bindingFlags">Optional binding flags to filter members. Defaults to all fields and properties.</param>
+    /// <returns>True if any fields or properties match the criteria; otherwise, false.</returns>
+    public static bool HasAnyValues(this Type type,
+        Func<MemberInfo, bool>? predicate = null,
+        BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
+    {
+        ArgumentNullException.ThrowIfNull(type);
+
+        // Get all fields and properties
+        var fields = type.GetFields(bindingFlags).Cast<MemberInfo>();
+        var properties = type.GetProperties(bindingFlags).Cast<MemberInfo>();
+
+        // Combine fields and properties
+        var members = fields.Concat(properties);
+
+        // Apply the predicate if provided, otherwise check if any member exists
+        return predicate == null
+            ? members.Any()
+            : members.Any(predicate);
+    }
+
+    /// <summary>
+    /// Retrieves all fields or properties of a type that match the specified criteria.
+    /// </summary>
+    /// <param name="type">The type to inspect.</param>
+    /// <param name="predicate">Optional predicate to filter members. Defaults to no filter.</param>
+    /// <param name="bindingFlags">Optional binding flags to filter members. Defaults to all fields and properties.</param>
+    /// <returns>A collection of matching fields or properties.</returns>
+    public static IEnumerable<MemberInfo> GetValues(this Type type,
+        Func<MemberInfo, bool>? predicate = null,
+        BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
+    {
+        ArgumentNullException.ThrowIfNull(type);
+
+        // Get all fields and properties
+        var fields = type.GetFields(bindingFlags).Cast<MemberInfo>();
+        var properties = type.GetProperties(bindingFlags).Cast<MemberInfo>();
+
+        // Combine fields and properties
+        var members = fields.Concat(properties);
+
+        // Apply the predicate if provided
+        return predicate == null ? members : members.Where(predicate);
+    }
 }
