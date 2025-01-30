@@ -195,4 +195,24 @@ public static class Extensions
         // Apply the predicate if provided
         return predicate == null ? members : members.Where(predicate);
     }
+
+    /// <summary>
+    /// Inverts a boolean value
+    /// </summary>
+    /// <param name="value">Value to invert</param>
+    /// <remarks>References the value and sets it directly, instead of returning it</remarks>
+    public static void Invert(this ref bool value)
+    {
+        value = !value;
+    }
+
+    /// <summary>
+    /// Inverts a boolean value
+    /// </summary>
+    /// <param name="value">Value to invert</param>
+    /// <returns>The inverted value</returns>
+    public static bool Inverted(this bool value)
+    {
+        return !value;
+    }
 }

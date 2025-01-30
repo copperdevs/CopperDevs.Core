@@ -6,11 +6,8 @@ namespace CopperDevs.Core.Utility;
 /// Simple object pool for types
 /// </summary>
 /// <typeparam name="T">Type of object to pool</typeparam>
-public static class ObjectPool<T> where T : new()
+public static class ObjectPool<T> where T : IObjectPoolable, new()
 {
-    private static readonly MethodInfo GottenMethod = typeof(T).GetMethod("Gotten")!;
-    private static readonly MethodInfo ReleasedMethod = typeof(T).GetMethod("Released")!;
-
     private static readonly Stack<T> Pool = new();
 
     /// <summary>
@@ -42,10 +39,10 @@ public static class ObjectPool<T> where T : new()
         switch (updateType)
         {
             case PoolableUpdateType.Gotten:
-                GottenMethod.Invoke(obj, []);
+                obj.Gotten();
                 break;
             case PoolableUpdateType.Released:
-                ReleasedMethod.Invoke(obj, []);
+                obj.Released();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(updateType), updateType, null);
