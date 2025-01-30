@@ -5,8 +5,8 @@ namespace CopperDevs.Core.Serialization.Nodes;
 
 public class TomlTable : TomlNode
 {
-    private Dictionary<string, TomlNode> children;
-    internal bool isImplicit;
+    private Dictionary<string, TomlNode> children = [];
+    internal bool IsImplicit;
 
     public override bool HasValue { get; } = false;
     public override bool IsTable { get; } = true;
@@ -30,7 +30,7 @@ public class TomlTable : TomlNode
     public override IEnumerable<string> Keys => RawTable.Select(kv => kv.Key);
     public override bool HasKey(string key) => RawTable.ContainsKey(key);
     public override void Add(string key, TomlNode node) => RawTable.Add(key, node);
-    public override bool TryGetNode(string key, out TomlNode node) => RawTable.TryGetValue(key, out node);
+    public override bool TryGetNode(string key, out TomlNode node) => RawTable.TryGetValue(key, out node!);
     public override void Delete(TomlNode node) => RawTable.Remove(RawTable.First(kv => kv.Value == node).Key);
     public override void Delete(string key) => RawTable.Remove(key);
 

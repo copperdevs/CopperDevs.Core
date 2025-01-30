@@ -15,7 +15,7 @@ public abstract class TomlNode : IEnumerable
     public virtual bool IsDateTimeLocal { get; } = false;
     public virtual bool IsDateTimeOffset { get; } = false;
     public virtual bool IsBoolean { get; } = false;
-    public virtual string Comment { get; set; }
+    public virtual string Comment { get; set; } = null!;
     public virtual int CollapseLevel { get; set; }
 
     public virtual TomlTable AsTable => (this as TomlTable)!;
@@ -81,7 +81,7 @@ public abstract class TomlNode : IEnumerable
 
     public virtual void WriteTo(TextWriter tw, string name = null!) => tw.WriteLine(ToInlineToml());
 
-    public virtual string ToInlineToml() => ToString();
+    public virtual string ToInlineToml() => ToString()!;
 
     #region Native type to TOML cast
 
@@ -110,7 +110,7 @@ public abstract class TomlNode : IEnumerable
 
     #region TOML to native type cast
 
-    public static implicit operator string(TomlNode value) => value.ToString();
+    public static implicit operator string(TomlNode value) => value.ToString()!;
 
     public static implicit operator int(TomlNode value) => (int)value.AsInteger.Value;
 

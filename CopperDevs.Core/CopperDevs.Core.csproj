@@ -5,9 +5,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <AssemblyVersion>1.1.6</AssemblyVersion>
-        <FileVersion>1.1.6</FileVersion>
-        <Version>1.1.6</Version>
+        <AssemblyVersion>1.1.7</AssemblyVersion>
+        <FileVersion>1.1.7</FileVersion>
+        <Version>1.1.7</Version>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>CopperDevs.Core</Title>
         <Copyright>MIT</Copyright>

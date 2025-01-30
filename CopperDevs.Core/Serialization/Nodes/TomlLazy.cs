@@ -36,19 +36,19 @@ internal class TomlLazy(TomlNode parent) : TomlNode
         if (parent.IsTable)
         {
             var key = parent.Keys.FirstOrDefault(s => parent.TryGetNode(s, out var node) && node.Equals(this));
-            if (key == null) return default(T);
+            if (key == null) return default(T)!;
 
             parent[key] = newNode;
         }
         else if (parent.IsArray)
         {
             var index = parent.Children.TakeWhile(child => child != this).Count();
-            if (index == parent.ChildrenCount) return default(T);
+            if (index == parent.ChildrenCount) return default(T)!;
             parent[index] = newNode;
         }
         else
         {
-            return default(T);
+            return default(T)!;
         }
 
         replacement = newNode;

@@ -1137,7 +1137,7 @@ public class TOMLParser : SafeDisposable
                         return null!;
                     }
 
-                    if (node is TomlTable { isImplicit: false })
+                    if (node is TomlTable { IsImplicit: false })
                     {
                         AddError($"The table {".".Join(path)} is defined multiple times!");
                         return null!;
@@ -1159,7 +1159,7 @@ public class TOMLParser : SafeDisposable
                     break;
                 }
 
-                node = new TomlTable { isImplicit = true };
+                node = new TomlTable { IsImplicit = true };
                 latestNode[subkey] = node;
             }
 
@@ -1167,7 +1167,7 @@ public class TOMLParser : SafeDisposable
         }
 
         var result = (TomlTable)latestNode;
-        result.isImplicit = false;
+        result.IsImplicit = false;
         return result;
     }
 
