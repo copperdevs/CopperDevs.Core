@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Numerics;
+using System.Runtime.InteropServices;
 using CopperDevs.Core.Data;
 
 namespace CopperDevs.Core.Utility;
@@ -160,7 +161,7 @@ public static partial class WindowsApi
     /// Get the position of the mouse cursor in position of the monitors
     /// </summary>
     /// <returns>Mouse position in monitor space</returns>
-    public static SystemVector2 GetMousePosition()
+    public static Vector2 GetMousePosition()
     {
         GetCursorPos(out var point);
         return point;
@@ -201,12 +202,12 @@ public static partial class WindowsApi
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
     /// <returns>Position of the window</returns>
-    public static SystemVector2 GetWindowPosition(IntPtr windowHandle)
+    public static Vector2 GetWindowPosition(IntPtr windowHandle)
     {
         if (!GetWindowRect(windowHandle, out var rect))
             throw new InvalidOperationException("Unable to get window position.");
 
-        return new SystemVector2(rect.Left, rect.Top);
+        return new Vector2(rect.Left, rect.Top);
     }
 
     /// <summary>
@@ -214,12 +215,12 @@ public static partial class WindowsApi
     /// </summary>
     /// <param name="windowHandle">Handle of the target window</param>
     /// <returns>Size of the widnow</returns>
-    public static SystemVector2 GetWindowSize(IntPtr windowHandle)
+    public static Vector2 GetWindowSize(IntPtr windowHandle)
     {
         if (!GetWindowRect(windowHandle, out var rect))
             throw new InvalidOperationException("Unable to get window size.");
 
-        return new SystemVector2(rect.Right - rect.Left, rect.Bottom - rect.Top);
+        return new Vector2(rect.Right - rect.Left, rect.Bottom - rect.Top);
     }
 
     /// <summary>
@@ -400,7 +401,7 @@ public static partial class WindowsApi
         public int y;
 
         public static implicit operator Vector2Int(Point point) => new(point.x, point.y);
-        public static implicit operator SystemVector2(Point point) => new(point.x, point.y);
+        public static implicit operator Vector2(Point point) => new(point.x, point.y);
     }
 
     [StructLayout(LayoutKind.Sequential)]

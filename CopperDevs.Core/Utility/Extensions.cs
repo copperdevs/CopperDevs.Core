@@ -10,47 +10,47 @@ public static class Extensions
     public static string ToTitleCase(this string target) => TextUtil.ConvertToTitleCase(target);
     public static string ToFancyString(this IEnumerable<byte> array) => array.Aggregate("", (current, item) => current + $"<{item}>,");
 
-    public static SystemVector4 ToVector(this Quaternion quaternion) => new(quaternion.X, quaternion.Y, quaternion.Z, quaternion.W);
-    public static Quaternion ToQuaternion(this SystemVector4 vector) => new(vector.X, vector.Y, vector.Z, vector.W);
+    public static Vector4 ToVector(this Quaternion quaternion) => new(quaternion.X, quaternion.Y, quaternion.Z, quaternion.W);
+    public static Quaternion ToQuaternion(this Vector4 vector) => new(vector.X, vector.Y, vector.Z, vector.W);
 
-    public static Quaternion FromEulerAngles(this SystemVector3 euler) => MathUtil.FromEulerAngles(euler);
-    public static SystemVector3 ToEulerAngles(this Quaternion quaternion) => MathUtil.ToEulerAngles(quaternion);
+    public static Quaternion FromEulerAngles(this Vector3 euler) => MathUtil.FromEulerAngles(euler);
+    public static Vector3 ToEulerAngles(this Quaternion quaternion) => MathUtil.ToEulerAngles(quaternion);
 
-    public static SystemVector3 Clamp(this SystemVector3 value, SystemVector3 min, SystemVector3 max) => MathUtil.Clamp(value, min, max);
+    public static Vector3 Clamp(this Vector3 value, Vector3 min, Vector3 max) => MathUtil.Clamp(value, min, max);
 
-    public static SystemVector2 ToRotatedUnitVector(this float value) => MathUtil.CreateRotatedUnitVector(value);
+    public static Vector2 ToRotatedUnitVector(this float value) => MathUtil.CreateRotatedUnitVector(value);
 
-    public static SystemVector2 WithX(this SystemVector2 vector, float value) => vector with { X = value };
-    public static SystemVector2 WithY(this SystemVector2 vector, float value) => vector with { Y = value };
+    public static Vector2 WithX(this Vector2 vector, float value) => vector with { X = value };
+    public static Vector2 WithY(this Vector2 vector, float value) => vector with { Y = value };
 
-    public static SystemVector3 WithX(this SystemVector3 vector, float value) => vector with { X = value };
-    public static SystemVector3 WithY(this SystemVector3 vector, float value) => vector with { Y = value };
-    public static SystemVector3 WithZ(this SystemVector3 vector, float value) => vector with { Z = value };
+    public static Vector3 WithX(this Vector3 vector, float value) => vector with { X = value };
+    public static Vector3 WithY(this Vector3 vector, float value) => vector with { Y = value };
+    public static Vector3 WithZ(this Vector3 vector, float value) => vector with { Z = value };
 
-    public static SystemVector4 WithX(this SystemVector4 vector, float value) => vector with { X = value };
-    public static SystemVector4 WithY(this SystemVector4 vector, float value) => vector with { Y = value };
-    public static SystemVector4 WithZ(this SystemVector4 vector, float value) => vector with { Z = value };
-    public static SystemVector4 WithW(this SystemVector4 vector, float value) => vector with { W = value };
+    public static Vector4 WithX(this Vector4 vector, float value) => vector with { X = value };
+    public static Vector4 WithY(this Vector4 vector, float value) => vector with { Y = value };
+    public static Vector4 WithZ(this Vector4 vector, float value) => vector with { Z = value };
+    public static Vector4 WithW(this Vector4 vector, float value) => vector with { W = value };
 
-    public static SystemVector2 FlipX(this SystemVector2 vector) => vector with { X = -vector.X };
-    public static SystemVector2 FlipY(this SystemVector2 vector) => vector with { Y = -vector.Y };
+    public static Vector2 FlipX(this Vector2 vector) => vector with { X = -vector.X };
+    public static Vector2 FlipY(this Vector2 vector) => vector with { Y = -vector.Y };
 
-    public static SystemVector3 FlipX(this SystemVector3 vector) => vector with { X = -vector.X };
-    public static SystemVector3 FlipY(this SystemVector3 vector) => vector with { Y = -vector.Y };
-    public static SystemVector3 FlipZ(this SystemVector3 vector) => vector with { Z = -vector.Z };
+    public static Vector3 FlipX(this Vector3 vector) => vector with { X = -vector.X };
+    public static Vector3 FlipY(this Vector3 vector) => vector with { Y = -vector.Y };
+    public static Vector3 FlipZ(this Vector3 vector) => vector with { Z = -vector.Z };
 
-    public static SystemVector4 FlipX(this SystemVector4 vector) => vector with { X = -vector.X };
-    public static SystemVector4 FlipY(this SystemVector4 vector) => vector with { Y = -vector.Y };
-    public static SystemVector4 FlipZ(this SystemVector4 vector) => vector with { Z = -vector.Z };
-    public static SystemVector4 FlipW(this SystemVector4 vector) => vector with { W = -vector.W };
+    public static Vector4 FlipX(this Vector4 vector) => vector with { X = -vector.X };
+    public static Vector4 FlipY(this Vector4 vector) => vector with { Y = -vector.Y };
+    public static Vector4 FlipZ(this Vector4 vector) => vector with { Z = -vector.Z };
+    public static Vector4 FlipW(this Vector4 vector) => vector with { W = -vector.W };
 
-    public static SystemVector3 ToVector3(this SystemVector2 vector, float z = 0) => new(vector.X, vector.Y, z);
-    public static SystemVector4 ToVector4(this SystemVector2 vector, float z = 0, float w = 0) => new(vector.X, vector.Y, z, w);
-    public static SystemVector4 ToVector4(this SystemVector3 vector, float w = 0) => new(vector.X, vector.Y, vector.Z, w);
+    public static Vector3 ToVector3(this Vector2 vector, float z = 0) => new(vector.X, vector.Y, z);
+    public static Vector4 ToVector4(this Vector2 vector, float z = 0, float w = 0) => new(vector.X, vector.Y, z, w);
+    public static Vector4 ToVector4(this Vector3 vector, float w = 0) => new(vector.X, vector.Y, vector.Z, w);
 
-    public static SystemVector2 ToVector2<T>(this T value) where T : INumber<T> => new((float)Convert.ChangeType(value, typeof(float)));
-    public static SystemVector3 ToVector3<T>(this T value) where T : INumber<T> => new((float)Convert.ChangeType(value, typeof(float)));
-    public static SystemVector4 ToVector4<T>(this T value) where T : INumber<T> => new((float)Convert.ChangeType(value, typeof(float)));
+    public static Vector2 ToVector2<T>(this T value) where T : INumber<T> => new((float)Convert.ChangeType(value, typeof(float)));
+    public static Vector3 ToVector3<T>(this T value) where T : INumber<T> => new((float)Convert.ChangeType(value, typeof(float)));
+    public static Vector4 ToVector4<T>(this T value) where T : INumber<T> => new((float)Convert.ChangeType(value, typeof(float)));
 
     public static string CapitalizeFirstLetter(this string message)
     {
@@ -62,7 +62,7 @@ public static class Extensions
         };
     }
 
-    public static SystemVector2 Remap(this SystemVector2 input, SystemVector2 inputMin, SystemVector2 inputMax, SystemVector2 outputMin, SystemVector2 outputMax)
+    public static Vector2 Remap(this Vector2 input, Vector2 inputMin, Vector2 inputMax, Vector2 outputMin, Vector2 outputMax)
     {
         return MathUtil.ReMap(input, inputMin, inputMax, outputMin, outputMax);
     }

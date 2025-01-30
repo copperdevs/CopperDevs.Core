@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Numerics;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -93,12 +94,12 @@ public struct Vector4Int(int x, int y, int z, int w) : IEquatable<Vector4Int>
         return new Vector4Int(left.X - right.X, left.Y - right.Y, left.Z - right.Z, left.W - right.W);
     }
 
-    public static implicit operator SystemVector4(Vector4Int value)
+    public static implicit operator Vector4(Vector4Int value)
     {
-        return new SystemVector4(value.X, value.Y, value.Z, value.W);
+        return new Vector4(value.X, value.Y, value.Z, value.W);
     }
 
-    public static implicit operator Vector4Int(SystemVector4 value)
+    public static implicit operator Vector4Int(Vector4 value)
     {
         return new Vector4Int((int)value.X, (int)value.Y, (int)value.Z, (int)value.W);
     }

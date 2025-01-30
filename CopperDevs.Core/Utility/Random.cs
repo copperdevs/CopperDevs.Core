@@ -8,17 +8,17 @@ namespace CopperDevs.Core.Utility;
 /// </summary>
 public static class Random
 {
-    private static readonly SystemRandom SystemRandom = new(new Guid().GetHashCode());
+    private static readonly SystemRandom SystemRandom = new(Guid.NewGuid().GetHashCode());
 
     /// <summary>
     /// Get a random value inside a unit circle
     /// </summary>
-    public static SystemVector2 InsideUnitCircle
+    public static Vector2 InsideUnitCircle
     {
         get
         {
             var theta = Range(0, 1f) * 2 * MathF.PI;
-            return new SystemVector2(MathF.Cos(theta), MathF.Sin(theta) * MathF.Sqrt(Range(0, 1f)));
+            return new Vector2(MathF.Cos(theta), MathF.Sin(theta) * MathF.Sqrt(Range(0, 1f)));
         }
     }
 
@@ -82,7 +82,7 @@ public static class Random
     /// <param name="valueRange">Vector range input</param>
     /// <returns>A random number</returns>
     /// <remarks>X is the minimum range and Y is the maximum range</remarks>
-    public static float Range(SystemVector2 valueRange)
+    public static float Range(Vector2 valueRange)
     {
         return Range(valueRange.X, valueRange.Y);
     }
@@ -117,9 +117,9 @@ public static class Random
     /// <param name="minRadius">Minimum range of the annulus</param>
     /// <param name="maxRadius">Maximum range of the annulus</param>
     /// <returns>Random point inside the annulus</returns>
-    public static SystemVector2 PointInAnnulus(SystemVector2 origin, float minRadius, float maxRadius)
+    public static Vector2 PointInAnnulus(Vector2 origin, float minRadius, float maxRadius)
     {
-        var randomDirection = SystemVector2.Normalize(InsideUnitCircle * origin);
+        var randomDirection = Vector2.Normalize(InsideUnitCircle * origin);
         var randomDistance = Range(minRadius, maxRadius);
         return origin + randomDirection * randomDistance;
     }
@@ -131,7 +131,7 @@ public static class Random
     /// <param name="radius">Vector range input</param>
     /// <returns>Random point inside the annulus</returns>
     /// <remarks>X is the minimum range and Y is the maximum range</remarks>
-    public static SystemVector2 PointInAnnulus(SystemVector2 origin, SystemVector2 radius)
+    public static Vector2 PointInAnnulus(Vector2 origin, Vector2 radius)
     {
         return PointInAnnulus(origin, radius.X, radius.Y);
     }
