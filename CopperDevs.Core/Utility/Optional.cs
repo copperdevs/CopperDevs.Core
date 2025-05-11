@@ -4,12 +4,12 @@ namespace CopperDevs.Core.Utility;
 /// Represents an optional value that may or may not be set.
 /// </summary>
 /// <typeparam name="TValue">The type of the value.</typeparam>
-public readonly struct Optional<TValue>
+public struct Optional<TValue>
 {
     /// <summary>
     /// Gets a value indicating whether this <see cref="Optional{TValue}"/> contains a value.
     /// </summary>
-    public bool Enabled { get; }
+    public bool Enabled { get; set; }
 
     /// <summary>
     /// Gets the value
@@ -20,12 +20,18 @@ public readonly struct Optional<TValue>
         get
         {
             if (!Enabled)
-                throw new InvalidOperationException("Optional has no value.");
+                throw new InvalidOperationException("Optional is disabled.");
             return value!;
+        }
+        set
+        {
+            if (!Enabled)
+                throw new InvalidOperationException("Optional is disabled.");
+            this.value = value;
         }
     }
 
-    private readonly TValue? value;
+    private TValue? value;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Optional{TValue}"/> struct with the specified value.
@@ -46,7 +52,7 @@ public readonly struct Optional<TValue>
     /// <summary>
     /// Returns an empty <see cref="Optional{TValue}"/> instance.
     /// </summary>
-    public static Optional<TValue> None => new(false, default);
+    public static Optional<TValue> Default => new(false, default);
 
     /// <summary>
     /// Implicitly wraps a value into an <see cref="Optional{TValue}"/>.
@@ -57,11 +63,17 @@ public readonly struct Optional<TValue>
     /// <summary>
     /// Attempts to get the value.
     /// </summary>
-    /// <param name="value">The output value if present.</param>
-    /// <returns>True if the value is present; otherwise, false.</returns>
+    /// <param name="value">The output value if present and <see cref="Enabled"/> is set to true.</param>
+    /// <returns>True if the value is present and enabled; otherwise, false.</returns>
     // ReSharper disable once ParameterHidesMember
     public bool TryGetValue(out TValue? value)
     {
+        if (!Enabled)
+        {
+            value = default;
+            return false;
+        }
+
         value = this.value;
         return Enabled;
     }
