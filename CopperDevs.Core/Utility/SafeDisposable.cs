@@ -3,7 +3,9 @@ namespace CopperDevs.Core.Utility;
 
 public abstract class SafeDisposable : IDisposable
 {
-    private bool hasDisposed = false;
+    // ReSharper disable once InconsistentNaming
+    // ReSharper disable once MemberCanBePrivate.Global
+    protected bool hasDisposed = false;
 
     ~SafeDisposable()
     {
