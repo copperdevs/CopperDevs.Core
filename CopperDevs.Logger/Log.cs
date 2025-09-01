@@ -44,7 +44,7 @@ namespace CopperDevs.Logger
         public static void Warning(object message) => CopperLogger.LogMessage(AnsiColors.Names.BrightYellow, "Warning", message);
 
         /// <summary>
-        /// Log a error style log to the console
+        /// Log an error style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
         public static void Error(object message) => CopperLogger.LogMessage(AnsiColors.Names.Red, "Error", message);
@@ -56,7 +56,7 @@ namespace CopperDevs.Logger
         public static void Critical(object message) => CopperLogger.LogMessage(AnsiColors.Names.BrightRed, "Critical", message);
 
         /// <summary>
-        /// Log a audit style log to the console
+        /// Log an audit style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
         public static void Audit(object message) => CopperLogger.LogMessage(AnsiColors.Names.Yellow, "Audit", message);

@@ -12,11 +12,6 @@ namespace CopperDevs.Logger
         /// </summary>
         public static bool IncludeTimestamps = true;
 
-        public static void Log(object message, CustomLog log)
-        {
-            LogMessage(log.MainColor, log.BackgroundColor, log.Prefix, message);
-        }
-
         internal static void LogMessage(AnsiColors.Names colorName, string prefix, object message)
         {
             LogMessage(colorName, colorName, prefix, message);
