@@ -12,9 +12,10 @@ namespace CopperDevs.Logger
         /// </summary>
         public static bool IncludeTimestamps = true;
 
-        internal static void LogMessage(AnsiColors.Names colorName, string prefix, object message)
+        internal static void LogMessage(AnsiColors.Names colorName, string prefix, object message, bool shouldLog)
         {
-            LogMessage(colorName, colorName, prefix, message);
+            if (shouldLog)
+                LogMessage(colorName, colorName, prefix, message);
         }
 
         private static void LogMessage(AnsiColors.Names colorName, AnsiColors.Names backgroundColorName, string prefix, object message)
@@ -25,7 +26,10 @@ namespace CopperDevs.Logger
             var time = IncludeTimestamps ? $"{DateTime.Now:HH:mm:ss}" : "";
             var timeSpacer = IncludeTimestamps ? " " : "";
 
-            Console.Write($"{AnsiColors.Black}{AnsiColors.LightGrayBackground}{time}{AnsiColors.Reset}{AnsiColors.Black}{timeSpacer}{backgroundColor}{prefix}:{AnsiColors.Reset} {color}{message}{AnsiColors.Reset}{Environment.NewLine}");
+            var timeText = $"{AnsiColors.Black}{AnsiColors.LightGrayBackground}{time}{AnsiColors.Reset}{AnsiColors.Black}{timeSpacer}";
+            var prefixText = $"{backgroundColor}{prefix}:{AnsiColors.Reset}";
+            
+            Console.Write($"{timeText}{prefixText} {color}{message}{AnsiColors.Reset}{Environment.NewLine}");
         }
     }
 }
