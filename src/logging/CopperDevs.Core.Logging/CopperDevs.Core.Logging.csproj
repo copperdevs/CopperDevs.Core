@@ -30,14 +30,14 @@
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
-        <None Include="..\License.txt">
+        <None Include="..\..\..\License.txt">
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CopperDevs.Logger\CopperDevs.Logger.csproj" />
+      <ProjectReference Include="..\..\logger\CopperDevs.Logger\CopperDevs.Logger.csproj" />
     </ItemGroup>
     
 </Project>

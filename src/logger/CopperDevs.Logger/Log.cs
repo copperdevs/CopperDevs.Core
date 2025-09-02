@@ -32,7 +32,7 @@ namespace CopperDevs.Logger
         /// Log an info style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Info(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.Cyan, "Information", message, condition);
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace CopperDevs.Logger
         /// Log a runtime style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Runtime(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.Magenta, "Runtime", message, condition);
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace CopperDevs.Logger
         /// Log a network style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Network(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.Blue, "Network", message, condition);
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace CopperDevs.Logger
         /// Log a success style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Success(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.BrightGreen, "Success", message, condition);
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace CopperDevs.Logger
         /// Log a warning style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Warning(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.BrightYellow, "Warning", message, condition);
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace CopperDevs.Logger
         /// Log an error style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Error(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.Red, "Error", message, condition);
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace CopperDevs.Logger
         /// Log a critical style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Critical(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.BrightRed, "Critical", message, condition);
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace CopperDevs.Logger
         /// Log an audit style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Audit(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.Yellow, "Audit", message, condition);
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace CopperDevs.Logger
         /// Log a trace style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Trace(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.LightBlue, "Trace", message, condition);
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace CopperDevs.Logger
         /// Log a security style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Security(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.Purple, "Security", message, condition);
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace CopperDevs.Logger
         /// Log a user action style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void UserAction(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.CutePink, "User Action", message, condition);
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace CopperDevs.Logger
         /// Log a performance style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Performance(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.Pink, "Performance", message, condition);
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace CopperDevs.Logger
         /// Log a config style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Config(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.LightGray, "Config", message, condition);
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace CopperDevs.Logger
         /// Log a fatal style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        /// <param name="condition">Should the message actually log</param>A
+        /// <param name="condition">Should the message actually log</param>
         public static void Fatal(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.DarkRed, "Fatal", message, condition);
 
         /// <summary>
