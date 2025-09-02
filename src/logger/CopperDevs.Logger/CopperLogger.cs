@@ -5,10 +5,57 @@ using System.Linq;
 
 namespace CopperDevs.Logger
 {
+    /// <summary>
+    /// Ways to have lists be printed
+    /// </summary>
     public enum ListLogType
     {
+        /// <summary>
+        /// Directly convert the list object to a string
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// Log.Debug(new List&lt;int&gt; { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+        ///  
+        /// // Resulting Log
+        /// Debug: System.Collections.Generic.List`1[System.String]
+        /// </code>
+        /// </example>
         Direct,
+
+        /// <summary>
+        /// Print each value of the list to its own line
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// Log.Debug(new List&lt;int&gt; { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+        ///  
+        /// // Resulting Log
+        /// Debug: 0
+        ///        1
+        ///        2
+        ///        3
+        ///        4
+        ///        5
+        ///        6
+        ///        7
+        ///        8
+        ///        9
+        /// </code>
+        /// </example>
         Multiple,
+
+        /// <summary>
+        /// Formats the values of the list into a single line.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// Log.Debug(new List&lt;int&gt; { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+        ///  
+        /// // Resulting Log
+        /// Debug: [0,1,2,3,4,5,6,7,8,9]
+        /// </code>
+        /// </example>
         Single
     }
 
@@ -20,13 +67,22 @@ namespace CopperDevs.Logger
         /// <summary>
         /// Should timestamps be logged alongside the message
         /// </summary>
+        // ReSharper disable once FieldCanBeMadeReadOnly.Global
+        // ReSharper disable once ConvertToConstant.Global
+        // ReSharper disable once MemberCanBePrivate.Global
         public static bool IncludeTimestamps = true;
 
         /// <summary>
         /// Should exceptions logs include the full stack trace
         /// </summary>
+        // ReSharper disable once FieldCanBeMadeReadOnly.Global
+        // ReSharper disable once ConvertToConstant.Global
+        // ReSharper disable once MemberCanBePrivate.Global
         public static bool SimpleExceptions = false;
 
+        /// <summary>
+        /// How lists should be printed to console
+        /// </summary>
         public static ListLogType ListLogType = ListLogType.Multiple;
 
         internal static void LogMessage(AnsiColors.Names colorName, string prefix, object message, bool shouldLog)
