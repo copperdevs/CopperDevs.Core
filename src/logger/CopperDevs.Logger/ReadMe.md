@@ -37,7 +37,7 @@ Log.Fatal("Fatal log example");
 
 ### Logged Result
 
-![Console logged rendered result](../repo/base-log-types.png)
+![Console logged rendered result](https://raw.githubusercontent.com/copperdevs/CopperDevs.Core/refs/heads/master/src/logger/repo/base-log-types.png)
 
 ## Exception Logging
 
@@ -79,7 +79,7 @@ public static void RecursiveExample(int maxDepth, int currentDepth)
 
 ### Logged Result
 
-![Console logged rendered result](../repo/exception-logging.png)
+![Console logged rendered result](https://raw.githubusercontent.com/copperdevs/CopperDevs.Core/refs/heads/master/src/logger/repo/exception-logging.png)
 
 ## List Logging
 
@@ -97,7 +97,7 @@ Log.Debug(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
 ### List Log Type - Direct Code Result
 
-![Console logged rendered result](../repo/direct-list-log-type.png)
+![Console logged rendered result](https://raw.githubusercontent.com/copperdevs/CopperDevs.Core/refs/heads/master/src/logger/repo/direct-list-log-type.png)
 
 ### List Log Type - Multiple Code Example
 
@@ -113,7 +113,7 @@ Log.Debug(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
 ### List Log Type - Multiple Code Result
 
-![Console logged rendered result](../repo/multiple-list-log-type.png)
+![Console logged rendered result](https://raw.githubusercontent.com/copperdevs/CopperDevs.Core/refs/heads/master/src/logger/repo/multiple-list-log-type.png)
 
 ### List Log Type - Single Code Example
 
@@ -129,4 +129,4 @@ Log.Debug(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 
 ### List Log Type - Single Code Result
 
-![Console logged rendered result](../repo/single-list-log-type.png)
+![Console logged rendered result](https://raw.githubusercontent.com/copperdevs/CopperDevs.Core/refs/heads/master/src/logger/repo/single-list-log-type.png)
