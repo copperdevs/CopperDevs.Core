@@ -4,25 +4,26 @@ public static class Program
 {
     public static void Main()
     {
-        Log.Debug("debug moment");
-        Log.Info("info moment");
-        Log.Runtime("runtime moment");
-        Log.Network("network moment");
-        Log.Success("success moment");
-        Log.Warning("warning moment");
-        Log.Error("error moment");
-        Log.Critical("critical moment");
-        Log.Audit("audit moment");
-        Log.Trace("trace moment");
-        Log.Security("security moment");
-        Log.UserAction("user action moment");
-        Log.Performance("performance moment");
-        Log.Config("config moment");
-        Log.Fatal("fatal moment");
+        Log.Debug("Debug log example");
+        Log.Info("Info log example");
+        Log.Runtime("Runtime log example");
+        Log.Network("Network log example");
+        Log.Success("Success log example");
+        Log.Warn("Warning log example");
+        Log.Error("Error log example");
+        Log.Critical("Critical log example");
+        Log.Audit("Audit log example");
+        Log.Trace("Trace log example");
+        Log.Security("Security log example");
+        Log.UserAction("User Action log example");
+        Log.Performance("Performance log example");
+        Log.Config("Config log example");
+        Log.Fatal("Fatal log example");
 
         try
         {
-            RecursiveMoment(10, 0);
+            // having some recursion to add depth to the stack trace
+            RecursiveMoment(6, 0);
         }
         catch (Exception e)
         {

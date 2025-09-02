@@ -73,19 +73,27 @@ namespace CopperDevs.Logger
         /// <param name="message">Data to log</param>
         /// <param name="condition">Should the message actually log</param>
         public static void Success(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.BrightGreen, "Success", message, condition);
-
+        
+        /// <summary>
+        /// Use <see cref="Warn(object)"/>
+        /// </summary>
+        /// <param name="message">Data to log</param>
+        /// 
+        [Obsolete("Use Log.Warn")]
+        public static void Warning(object message) => Warn(message);
+        
         /// <summary>
         /// Log a warning style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
-        public static void Warning(object message) => Warning(message, true);
+        public static void Warn(object message) => Warn(message, true);
 
         /// <summary>
         /// Log a warning style log to the console
         /// </summary>
         /// <param name="message">Data to log</param>
         /// <param name="condition">Should the message actually log</param>
-        public static void Warning(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.BrightYellow, "Warning", message, condition);
+        public static void Warn(object message, bool condition) => CopperLogger.LogMessage(AnsiColors.Names.BrightYellow, "Warning", message, condition);
 
         /// <summary>
         /// Log an error style log to the console

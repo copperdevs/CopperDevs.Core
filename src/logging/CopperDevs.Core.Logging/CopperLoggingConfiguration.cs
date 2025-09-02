@@ -11,7 +11,7 @@ public sealed class CopperLoggingConfiguration
     {
         [LogLevel.Trace] = Log.Trace,
         [LogLevel.Debug] = Log.Debug,
-        [LogLevel.Warning] = Log.Warning,
+        [LogLevel.Warning] = Log.Warn,
         [LogLevel.Information] = Log.Info,
         [LogLevel.Error] = Log.Error,
         [LogLevel.Critical] = Log.Critical
