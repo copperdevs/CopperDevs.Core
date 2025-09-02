@@ -28,6 +28,23 @@ public static class Program
         {
             Log.Exception(e);
         }
+
+        LogLists(ListLogType.Direct);
+        LogLists(ListLogType.Multiple);
+        LogLists(ListLogType.Single);
+    }
+
+    private static void LogLists(ListLogType listType)
+    {
+        CopperLogger.ListLogType = listType;
+        Log.Config($"Setting {nameof(CopperLogger.ListLogType)} to {listType}");
+        
+        Log.Debug(new List<string> { "list", "logging", "moment" });
+        Log.Debug(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+#pragma warning disable CA1861
+        Log.Debug(new[] { "list", "logging", "moment" });
+        Log.Debug(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+#pragma warning restore CA1861
     }
 
     public static void RecursiveMoment(int maxDepth, int currentDepth)
