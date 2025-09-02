@@ -87,10 +87,11 @@ namespace CopperDevs.Logger
             for (var i = 0; i < list.Count; i++)
             {
                 var first = i == 0;
+                var last = i == list.Count - 1;
                 var item = list[i].TrimStart();
 
                 if (!string.IsNullOrWhiteSpace(item))
-                    finalResult += $"{(first ? "" : "".PadLeft(prefixText.Length + 1))}{item}{Environment.NewLine}";
+                    finalResult += $"{(first ? string.Empty : string.Empty.PadLeft(prefixText.Length + 1))}{item}{(last ? string.Empty : Environment.NewLine)}";
             }
             
             Console.Write($"{timeText}{prefixText} {color}{finalResult}{AnsiColors.Reset}{Environment.NewLine}");
