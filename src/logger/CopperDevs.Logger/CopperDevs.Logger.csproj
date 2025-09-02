@@ -21,6 +21,14 @@
         <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
         <Version>1.1.0</Version>
     </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\CopperDevs.Logger.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\CopperDevs.Logger.xml</DocumentationFile>
+    </PropertyGroup>
     
     <ItemGroup>
         <None Include="ReadMe.md">
