@@ -46,7 +46,7 @@ namespace CopperDevs.Logger
         Multiple,
 
         /// <summary>
-        /// Formats the values of the list into a single line.
+        /// Formats the values of the list into a single line
         /// </summary>
         /// <example>
         /// <code>
