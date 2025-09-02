@@ -5,13 +5,13 @@
 ## Logging Options
 
 - Include Timestamps: Should timestamps be logged alongside the message
-  - bool
+    - bool
 - Simple Exceptions: Should exceptions logs include the full stack trace
-  - bool
+    - bool
 - List Log Type: How lists should be printed to console
-  - [Direct](#list-log-type---direct-code-example): Directly convert the list object to a string
-  - [Multiple](#list-log-type---multiple-code-example): Print each value of the list to its own line
-  - [Single](#list-log-type---single-code-example): Formats the values of the list into a single line
+    - [Direct](#list-log-type---direct-code-example): Directly convert the list object to a string
+    - [Multiple](#list-log-type---multiple-code-example): Print each value of the list to its own line
+    - [Single](#list-log-type---single-code-example): Formats the values of the list into a single line
 
 ## Log Types
 
@@ -47,11 +47,33 @@ Log.Fatal("Fatal log example");
 try
 {
     // having some recursion to add depth to the stack trace
-    RecursiveMoment(6, 0);
+    RecursiveExample(6, 0);
 }
 catch (Exception e)
 {
     Log.Exception(e);
+}
+
+    
+public static void RecursiveExample(int maxDepth, int currentDepth)
+{
+    if (currentDepth == 0)
+        Log.Info($"Starting recursive loop with depth of {maxDepth}");
+
+    Log.Debug($"Current depth of {currentDepth}");
+
+    if (maxDepth >= currentDepth)
+    {
+        currentDepth++;
+        
+        RecursiveExample(maxDepth, currentDepth);
+    }
+    else
+    {
+        Log.Success($"Finished");
+
+        throw new NullReferenceException("exception core");
+    }
 }
 ```
 

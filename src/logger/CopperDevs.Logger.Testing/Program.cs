@@ -23,7 +23,7 @@ public static class Program
         try
         {
             // having some recursion to add depth to the stack trace
-            RecursiveMoment(6, 0);
+            RecursiveExample(6, 0);
         }
         catch (Exception e)
         {
@@ -48,7 +48,7 @@ public static class Program
 #pragma warning restore CA1861
     }
 
-    public static void RecursiveMoment(int maxDepth, int currentDepth)
+    public static void RecursiveExample(int maxDepth, int currentDepth)
     {
         if (currentDepth == 0)
             Log.Info($"Starting recursive loop with depth of {maxDepth}");
@@ -59,7 +59,7 @@ public static class Program
         {
             currentDepth++;
             // ReSharper disable once TailRecursiveCall
-            RecursiveMoment(maxDepth, currentDepth);
+            RecursiveExample(maxDepth, currentDepth);
         }
         else
         {
