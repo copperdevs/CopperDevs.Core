@@ -158,8 +158,15 @@ namespace CopperDevs.Logger
                 _ => throw new ArgumentOutOfRangeException()
             };
 
+            var previous = DuplicatesLogType;
+            
+            if (ListLogType == ListLogType.Multiple) 
+                previous = DuplicatesLogType.Nothing;
+            
             Write($"{timeText}{prefixText} {color}{result}", timeText);
-
+            
+            DuplicatesLogType = previous;
+            
             return;
 
             string GetResult(string firstPos, string firstNeg, string lastPos, string lastNeg)
