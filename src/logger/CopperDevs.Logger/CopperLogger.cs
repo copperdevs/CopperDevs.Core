@@ -32,6 +32,12 @@ namespace CopperDevs.Logger
         /// </summary>
         public static ListLogType ListLogType = ListLogType.Multiple;
 
+        /// <summary>
+        /// How duplicate messages with the same contents should be logged
+        /// </summary>
+        /// <remarks>
+        /// Is temporarily set to <see cref="DuplicatesLogType.Nothing"/> when logging lists with <see cref="ListLogType.Multiple"/> enabled
+        /// </remarks>
         public static DuplicatesLogType DuplicatesLogType = DuplicatesLogType.Nothing;
 
         internal static void LogMessage(AnsiColors.Names colorName, string prefix, object message, bool shouldLog)
@@ -87,7 +93,7 @@ namespace CopperDevs.Logger
             // we properly log this specific case elsewhere, so just return from here
             if (message.GetType() == typeof(List<string>)) return false;
 
-            var stringList = (from object? item in ((IList)message) select item.ToString()).ToList();
+            var stringList = (from object? item in (IList)message select item!.ToString()).ToList();
 
             LogMessage(colorName, backgroundColorName, prefix, stringList);
             return true;
@@ -180,7 +186,7 @@ namespace CopperDevs.Logger
         private static void Write(string message, string time)
         {
             var extra = string.Empty;
-            
+
             if (DuplicatesLogType != DuplicatesLogType.Nothing)
             {
                 var msg = DuplicatesLogType switch

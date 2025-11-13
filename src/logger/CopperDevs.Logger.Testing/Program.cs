@@ -4,9 +4,14 @@ public static class Program
 {
     public static void Main()
     {
+        CopperLogger.IncludeTimestamps = false;
+        
         LogDuplicates(DuplicatesLogType.Nothing);
         LogDuplicates(DuplicatesLogType.Numbered);
         LogDuplicates(DuplicatesLogType.IgnoreTime);
+        
+        CopperLogger.IncludeTimestamps = true;
+        CopperLogger.DuplicatesLogType = DuplicatesLogType.Nothing;
         
         Log.Debug("Debug log example");
         Log.Info("Info log example");
@@ -70,9 +75,13 @@ public static class Program
         Log.Config($"Setting {nameof(CopperLogger.ListLogType)} to {listType}");
 
         Log.Debug(new List<string> { "list", "logging", "moment" });
+        Log.Debug(new List<string> { "list", "logging", "moment" });
+        Log.Debug(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
         Log.Debug(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 #pragma warning disable CA1861
         Log.Debug(new[] { "list", "logging", "moment" });
+        Log.Debug(new[] { "list", "logging", "moment" });
+        Log.Debug(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
         Log.Debug(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 #pragma warning restore CA1861
 
