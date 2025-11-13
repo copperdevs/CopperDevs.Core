@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace CopperDevs.Logger
@@ -31,6 +32,8 @@ namespace CopperDevs.Logger
         /// </summary>
         public static ListLogType ListLogType = ListLogType.Multiple;
 
+        public static DuplicatesLogType DuplicatesLogType = DuplicatesLogType.Nothing;
+
         internal static void LogMessage(AnsiColors.Names colorName, string prefix, object message, bool shouldLog)
         {
             if (shouldLog)
@@ -60,7 +63,7 @@ namespace CopperDevs.Logger
             var timeText = $"{AnsiColors.Black}{AnsiColors.LightGrayBackground}{time}{AnsiColors.Reset}{AnsiColors.Black}{timeSpacer}";
             var prefixText = $"{backgroundColor}{prefix}:{AnsiColors.Reset}";
 
-            Console.Write($"{timeText}{prefixText} {color}{message}{AnsiColors.Reset}{Environment.NewLine}");
+            Write($"{timeText}{prefixText} {color}{message}", timeText);
         }
 
         private static bool HandleList(AnsiColors.Names colorName, AnsiColors.Names backgroundColorName, string prefix, object message)
@@ -76,7 +79,7 @@ namespace CopperDevs.Logger
 
             if (ListLogType == ListLogType.Direct)
             {
-                string moment = $"{message}";
+                var moment = $"{message}";
                 LogMessage(colorName, backgroundColorName, prefix, moment);
                 return true;
             }
@@ -95,7 +98,7 @@ namespace CopperDevs.Logger
             var lines = new List<string>
             {
                 exception.Message,
-                (SimpleExceptions ? $"{exception.TargetSite} in {exception.Source}" : string.Empty)
+                SimpleExceptions ? $"{exception.TargetSite} in {exception.Source}" : string.Empty
             };
 
             if (!SimpleExceptions)
@@ -149,7 +152,7 @@ namespace CopperDevs.Logger
                 _ => throw new ArgumentOutOfRangeException()
             };
 
-            Console.Write($"{timeText}{prefixText} {color}{result}{AnsiColors.Reset}{Environment.NewLine}");
+            Write($"{timeText}{prefixText} {color}{result}", timeText);
 
             return;
 
@@ -169,6 +172,49 @@ namespace CopperDevs.Logger
 
                 return finalResult;
             }
+        }
+
+        private static string? previousMessage;
+        private static int previousMessageCount = 1;
+
+        private static void Write(string message, string time)
+        {
+            var extra = string.Empty;
+            
+            if (DuplicatesLogType != DuplicatesLogType.Nothing)
+            {
+                var msg = DuplicatesLogType switch
+                {
+                    DuplicatesLogType.Numbered => message,
+                    DuplicatesLogType.IgnoreTime => message.Remove(0, time.Length),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+
+                var isSame = previousMessage == msg;
+
+                if (isSame)
+                {
+                    previousMessageCount++;
+
+                    // Move up one line safely
+                    if (Console.CursorTop > 0)
+                        Console.CursorTop--;
+                }
+                else
+                {
+                    previousMessageCount = 1;
+                }
+
+                previousMessage = msg;
+
+                // Build the suffix only when count > 1
+                extra = previousMessageCount > 1 ? $" x{previousMessageCount}" : "";
+
+                // Clear the whole line before writing
+                Console.Write("\r" + new string(' ', Console.BufferWidth - 1) + "\r");
+            }
+
+            Console.Write($"{message}{AnsiColors.Reset}{extra}{Environment.NewLine}");
         }
     }
 }

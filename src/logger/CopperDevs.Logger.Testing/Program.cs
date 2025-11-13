@@ -4,6 +4,10 @@ public static class Program
 {
     public static void Main()
     {
+        LogDuplicates(DuplicatesLogType.Nothing);
+        LogDuplicates(DuplicatesLogType.Numbered);
+        LogDuplicates(DuplicatesLogType.IgnoreTime);
+        
         Log.Debug("Debug log example");
         Log.Info("Info log example");
         Log.Runtime("Runtime log example");
@@ -20,6 +24,8 @@ public static class Program
         Log.Config("Config log example");
         Log.Fatal("Fatal log example");
 
+        Wait();
+
         try
         {
             // having some recursion to add depth to the stack trace
@@ -30,25 +36,50 @@ public static class Program
             Log.Exception(e);
         }
 
+        Wait();
+
         LogLists(ListLogType.Direct);
         LogLists(ListLogType.Multiple);
         LogLists(ListLogType.Single);
+    }
+
+    private static void LogDuplicates(DuplicatesLogType duplicateType)
+    {
+        CopperLogger.DuplicatesLogType = duplicateType;
+        Log.Config($"Setting {nameof(CopperLogger.DuplicatesLogType)} to {duplicateType}");
+        
+        Task.Run(() =>
+        {
+            for (var i = 0; i < 16; i++)
+            {
+                Log.Debug("Repeated Log");
+                Wait();
+            }
+
+            for (var i = 0; i < 4; i++)
+            {
+                Log.Debug("Repeated Log 2");
+                Wait();
+            }
+        }).Wait();
     }
 
     private static void LogLists(ListLogType listType)
     {
         CopperLogger.ListLogType = listType;
         Log.Config($"Setting {nameof(CopperLogger.ListLogType)} to {listType}");
-        
+
         Log.Debug(new List<string> { "list", "logging", "moment" });
         Log.Debug(new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 #pragma warning disable CA1861
         Log.Debug(new[] { "list", "logging", "moment" });
         Log.Debug(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
 #pragma warning restore CA1861
+
+        Wait();
     }
 
-    public static void RecursiveExample(int maxDepth, int currentDepth)
+    private static void RecursiveExample(int maxDepth, int currentDepth)
     {
         if (currentDepth == 0)
             Log.Info($"Starting recursive loop with depth of {maxDepth}");
@@ -68,4 +99,6 @@ public static class Program
             throw new NullReferenceException("exception core");
         }
     }
+
+    private static void Wait() => Task.Delay(100).Wait();
 }
