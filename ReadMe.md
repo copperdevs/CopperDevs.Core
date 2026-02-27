@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This project has been deprecated with all logic moved to [celesium](https://github.com/copperdevs/celesium)
+
 # CopperDevs.Core
 
 > Common files used in multiple projects of mine
